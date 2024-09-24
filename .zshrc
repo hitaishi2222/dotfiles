@@ -4,13 +4,10 @@ fi
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 
 
 plugins=(git sudo copypath copyfile command-not-found colorize python web-search 
           zsh-syntax-highlighting zoxide zsh-autosuggestions fzf-tab)
-
-source /home/hiti/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
@@ -22,8 +19,6 @@ compinit
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=$HOME/.local/bin:$PATH
 export PATH=:$PATH:/usr/local/bins
-export PATH=$PATH:$HOME/.pyenv/bin
-export PYENV_ROOT="$HOME/.pyenv"
 
 # History
 HISTSIZE=5000
@@ -59,7 +54,5 @@ alias mpi4="mpirun -np 4"
 alias yazi="~/yazi/target/release/yazi"
 
 eval "$(zoxide init zsh)"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 source $ZSH/oh-my-zsh.sh

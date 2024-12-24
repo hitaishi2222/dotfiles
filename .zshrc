@@ -19,6 +19,17 @@ compinit
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=$HOME/.local/bin:$PATH
 export PATH=:$PATH:/usr/local/bins
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/repo/prj
+export PATH="$HOME/.cargo/bin:$PATH"
+
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
+fi
+
 
 # History
 HISTSIZE=5000
@@ -51,8 +62,27 @@ alias c='clear'
 alias cd="z"
 alias ls='eza --icons=always'
 alias mpi4="mpirun -np 4"
-alias yazi="~/yazi/target/release/yazi"
+alias vim='nvim'
+alias fabric='~/fabric'
+alias fm6000='fm6000 -f ~/.arch_ascii.txt -c blue' 
+alias pbpaste='xclip -selection clipboard -o'
+alias cursor='~/Downloads/cursor-0.43.6x86_64.AppImage'
+alias scls='simple-completion-language-server'
 
 eval "$(zoxide init zsh)"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 source $ZSH/oh-my-zsh.sh
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quite
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+# running FM6000 on startup
+fm6000
+
+# bun completions
+[ -s "/home/hiti/.bun/_bun" ] && source "/home/hiti/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

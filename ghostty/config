@@ -1,0 +1,9 @@
+theme = catppuccin-mocha
+shell-integration = zsh
+font-size = 14
+focus-follows-mouse = true
+mouse-hide-while-typing = true
+initial-command = tmux
+link-url = true
+window-decoration = false
+

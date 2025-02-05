@@ -1,3 +1,6 @@
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
+
 local opt = vim.opt
 
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
@@ -19,8 +22,11 @@ opt.tabstop = 4 -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support
 opt.wrap = true -- Disable line wrap
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-
+-- vim.go.lazyredraw = true
 vim.g.markdown_recommended_style = 0
+
+-- Specific python environment
+vim.g.python3_host_prog = "~/.pyenv/versions/3.13.0/envs/.zed_env/bin/python"
 
 vim.schedule(function()
 	vim.opt.clipboard = "unnamedplus"

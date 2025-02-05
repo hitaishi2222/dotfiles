@@ -6,6 +6,8 @@ vim.g.deprecation_warnings = false
 
 local map = vim.keymap.set
 
+map("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
+map("n", "<leader>G", "<cmd>Gen<cr>", { desc = "Gen AI" })
 map("n", "<leader>W", "<cmd>qa<cr>", { desc = "Quit All" })
 -- buffers
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })

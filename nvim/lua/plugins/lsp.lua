@@ -69,7 +69,9 @@ return {
 					"marksman",
 					"ruff",
 					"yamlls",
+					"ltex",
 					"typos_lsp",
+					"texlab",
 				},
 				automatic_installation = true,
 			})

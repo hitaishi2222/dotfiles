@@ -21,7 +21,6 @@ opt.autoindent = true
 opt.tabstop = 4 -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support
 opt.wrap = true -- Disable line wrap
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- vim.go.lazyredraw = true
 vim.g.markdown_recommended_style = 0
 

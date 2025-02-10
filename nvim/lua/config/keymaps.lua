@@ -4,6 +4,7 @@ vim.g.lazyvim_cmp = "auto"
 vim.g.ai_cmp = true
 vim.g.deprecation_warnings = false
 
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 local map = vim.keymap.set
 
 map("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })

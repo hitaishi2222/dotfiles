@@ -1,3 +1,4 @@
+vim.cmd("imap jj <ESC>")
 vim.g.autoformat = true
 vim.g.lazyvim_picker = "auto"
 vim.g.lazyvim_cmp = "auto"

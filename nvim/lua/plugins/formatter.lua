@@ -22,7 +22,15 @@ return {
 			lua = { "stylua" },
 			sh = { "shfmt" },
 			javascript = { "prettier" },
+			latex = { "tex-fmt" },
 			python = { "black" },
+		},
+		formatters = {
+			tex_fmt = {
+        inherit = true,
+				command = "tex-fmt",
+				prepend_args = "-n",
+			},
 		},
 	},
 }

@@ -10,8 +10,8 @@ return {
 	},
 	{
 		"rose-pine/neovim",
-		lazy = true,
-		name = "rose-pine",
+    enabled = false,
+    event = "VeryLazy",
 		config = function()
 			vim.cmd("colorscheme rose-pine")
 			-- to remove '~'
@@ -20,19 +20,9 @@ return {
 	},
 	{
 		"folke/tokyonight.nvim",
-		lazy = true,
+    enabled = false,
+		event = "VeryLazy",
 		-- priority = 1000,
-		opts = {},
-	},
-	{
-		"rebelot/kanagawa.nvim",
-		"mhartington/oceanic-next",
-		"oxfist/night-owl.nvim",
-	},
-	{
-		"craftzdog/solarized-osaka.nvim",
-		lazy = false,
-		priority = 1000,
 		opts = {},
 	},
 }

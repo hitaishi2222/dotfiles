@@ -49,3 +49,9 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "lua",
 	command = "setlocal tabstop=2 shiftwidth=2 expandtab",
 })
+
+-- setting filetype for latex to latex not tex
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*.tex", -- Or any other pattern for your LaTeX files
+	command = "setlocal ft=latex",
+})

@@ -28,7 +28,7 @@ vim.g.markdown_recommended_style = 0
 vim.g.python3_host_prog = "~/.pyenv/versions/3.13.0/envs/.zed_env/bin/python"
 
 vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus"
+  vim.opt.clipboard = "unnamedplus"
 end)
 
 -- Move line up
@@ -40,18 +40,9 @@ vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true
 -- Move selected lines down
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
 
--- Indentations
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "python",
-	command = "setlocal tabstop=4 shiftwidth=4 expandtab",
-})
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "lua",
-	command = "setlocal tabstop=2 shiftwidth=2 expandtab",
-})
-
--- setting filetype for latex to latex not tex
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = "*.tex", -- Or any other pattern for your LaTeX files
-	command = "setlocal ft=latex",
+  pattern = "*.tex",
+  callback = function()
+    vim.bo.filetype = "tex" -- Or use "latex"
+  end,
 })

@@ -20,5 +20,7 @@ return {
     require("lspconfig").marksman.setup({ capabilities = capabilities })
     require("lspconfig").texlab.setup({ capabilities = capabilities })
     require("lspconfig").bashls.setup({ capabilities = capabilities })
+    require("lspconfig").ltex.setup({ capabilities = capabilities })
+    require("lspconfig").ltex_plus.setup({ capabilities = capabilities })
   end,
 }

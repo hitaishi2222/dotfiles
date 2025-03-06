@@ -12,12 +12,13 @@ return {
         lua = { "stylua" },
         python = { "black" },
         tex = { "tex-fmt" },
+        markdown = { "prettierd" },
       },
       notify_no_formatters = true,
       formatters = {
         ["tex-fmt"] = {
           command = "tex-fmt",
-          args = { "-n", "--stdin" },
+          -- args = { "-n", "--stdin" },
         },
       },
     })

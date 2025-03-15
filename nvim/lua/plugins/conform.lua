@@ -13,12 +13,13 @@ return {
         python = { "black" },
         tex = { "tex-fmt" },
         markdown = { "prettierd" },
+        rust = { "rustfmt" },
       },
       notify_no_formatters = true,
       formatters = {
         ["tex-fmt"] = {
           command = "tex-fmt",
-          -- args = { "-n", "--stdin" },
+          args = { "-n", "--stdin" },
         },
       },
     })

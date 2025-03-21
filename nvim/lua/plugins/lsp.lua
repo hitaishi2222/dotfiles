@@ -46,8 +46,37 @@ return {
     require("lspconfig").marksman.setup({ capabilities = capabilities })
     require("lspconfig").texlab.setup({ capabilities = capabilities })
     require("lspconfig").bashls.setup({ capabilities = capabilities })
-    require("lspconfig").ltex.setup({ capabilities = capabilities })
-    require("lspconfig").ltex_plus.setup({ capabilities = capabilities })
+    -- require("lspconfig").ltex.setup({ capabilities = capabilities })
+    require("lspconfig").harper_ls.setup({
+      filetypes = { "latex", "tex", "markdown", "txt" },
+      settings = {
+        ["harper-ls"] = {
+          userDictPath = "",
+          fileDictPath = "",
+          linters = {
+            SpellCheck = true,
+            SpelledNumbers = false,
+            AnA = true,
+            SentenceCapitalization = true,
+            UnclosedQuotes = true,
+            WrongQuotes = false,
+            LongSentences = true,
+            RepeatedWords = true,
+            Spaces = true,
+            Matcher = true,
+            CorrectNumberSuffix = true,
+          },
+          codeActions = {
+            ForceStable = false,
+          },
+          markdown = {
+            IgnoreLinkTitle = false,
+          },
+          diagnosticSeverity = "hint",
+          isolateEnglish = false,
+        },
+      },
+    })
     require("lspconfig").pylsp.setup({
       capabilities = capabilities,
       settings = {

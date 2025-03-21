@@ -6,7 +6,11 @@ return {
     picker = {},
     lazygit = {},
     input = {},
+    dashboard = {},
+    notifier = {},
+    -- statuscolumn = {},
     explorer = {
+      -- enabled = false,
       replace_netrw = true,
     },
   },

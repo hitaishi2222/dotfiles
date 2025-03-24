@@ -46,9 +46,9 @@ return {
     require("lspconfig").marksman.setup({ capabilities = capabilities })
     require("lspconfig").texlab.setup({ capabilities = capabilities })
     require("lspconfig").bashls.setup({ capabilities = capabilities })
-    -- require("lspconfig").ltex.setup({ capabilities = capabilities })
+    require("lspconfig").pyright.setup({ capabilities = capabilities })
+    require("lspconfig").ruff.setup({ capabilities = capabilities })
     require("lspconfig").harper_ls.setup({
-      filetypes = { "latex", "tex", "markdown", "txt" },
       settings = {
         ["harper-ls"] = {
           userDictPath = "",
@@ -74,29 +74,6 @@ return {
           },
           diagnosticSeverity = "hint",
           isolateEnglish = false,
-        },
-      },
-    })
-    require("lspconfig").pylsp.setup({
-      capabilities = capabilities,
-      settings = {
-        pylsp = {
-          plugins = {
-            mypy = {
-              enabled = true,
-              live_mode = false, -- Disables live checking for performance reasons
-              dmypy = true, -- Use daemon mode for faster checks
-            },
-            rope = {
-              enabled = true,
-            },
-            pyslp_rope = {
-              enabled = true,
-            },
-            ruff = {
-              enabled = true,
-            },
-          },
         },
       },
     })

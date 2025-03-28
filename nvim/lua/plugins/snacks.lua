@@ -3,11 +3,18 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
-    picker = {},
+    picker = {
+      sources = {
+        explorer = {
+          layout = { layout = { position = "right" } },
+        },
+      },
+    },
     lazygit = {},
     input = {},
     dashboard = {},
     notifier = {},
+    words = {},
     -- statuscolumn = {},
     explorer = {
       -- enabled = false,

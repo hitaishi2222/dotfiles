@@ -3,6 +3,7 @@ return {
   event = "InsertEnter",
   opts = {
     bind = true,
+    hint_prefix = "󰛨 ",
     handler_opts = {
       border = "rounded",
     },

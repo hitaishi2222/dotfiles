@@ -21,6 +21,9 @@ return {
           command = "tex-fmt",
           args = { "-n", "--stdin" },
         },
+        black = {
+          prepend_args = { "--skip-magic-trailing-comma" }, -- "--line-length", "100",
+        },
       },
     })
     vim.api.nvim_create_autocmd("BufWritePre", {

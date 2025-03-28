@@ -48,10 +48,23 @@ return {
     require("lspconfig").bashls.setup({ capabilities = capabilities })
     require("lspconfig").pyright.setup({ capabilities = capabilities })
     require("lspconfig").ruff.setup({ capabilities = capabilities })
+    require("lspconfig").rust_analyzer.setup({
+      capabilities = capabilities,
+      settings = {
+        ["rust-analyzer"] = {
+          diagnostics = {
+            enable = false,
+          },
+        },
+      },
+      on_attach = function(client, bufnr)
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+      end,
+    })
     require("lspconfig").harper_ls.setup({
       settings = {
         ["harper-ls"] = {
-          userDictPath = "",
+          userDictPath = "/home/hiti/Hiti/dict.txt",
           fileDictPath = "",
           linters = {
             SpellCheck = true,
@@ -67,7 +80,7 @@ return {
             CorrectNumberSuffix = true,
           },
           codeActions = {
-            ForceStable = false,
+            ForceStable = true,
           },
           markdown = {
             IgnoreLinkTitle = false,

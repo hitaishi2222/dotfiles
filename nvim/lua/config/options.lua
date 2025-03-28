@@ -1,11 +1,8 @@
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
-
 local opt = vim.opt
-
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
+opt.scrolloff = 10 -- Number of lines to keep before scrolling
 opt.ignorecase = true -- Ignore case
 opt.cursorline = true -- Enable highlighting of the current line
 opt.mouse = "a" -- Enable mouse mode
@@ -21,6 +18,9 @@ opt.autoindent = true
 opt.tabstop = 4 -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support
 opt.wrap = true -- Disable line wrap
+opt.list = true
+opt.listchars = { tab = "» ", trail = "·" }
+opt.confirm = true
 -- vim.go.lazyredraw = true
 vim.g.markdown_recommended_style = 0
 

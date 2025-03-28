@@ -3,6 +3,7 @@ return {
   { "j-hui/fidget.nvim", opts = {} },
   { "github/copilot.vim", enabled = false },
   { "arnamak/stay-centered.nvim" },
+  { "leseixas/quantum_espresso-vim", lazy = false },
   {
     "vimpostor/vim-tpipeline",
     config = function()

@@ -16,7 +16,7 @@ return {
     -- require("mini.notify").setup()
     -- require("mini.starter").setup()
     require("mini.tabline").setup({})
-    require("mini.animate").setup()
+    -- require("mini.animate").setup()
     require("mini.indentscope").setup()
     require("mini.basics").setup({ mappings = { windows = true } })
     require("mini.files").setup({ windows = { preview = true, width_focus = 25, width_preview = 75 } })

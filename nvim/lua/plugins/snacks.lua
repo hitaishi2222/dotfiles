@@ -15,6 +15,7 @@ return {
     dashboard = {},
     notifier = {},
     words = {},
+    -- image = {},
     -- statuscolumn = {},
     explorer = {
       -- enabled = false,

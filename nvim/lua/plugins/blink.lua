@@ -1,6 +1,6 @@
 return {
   "saghen/blink.cmp",
-  dependencies = "rafamadriz/friendly-snippets",
+  dependencies = { "rafamadriz/friendly-snippets", "echasnovski/mini.snippets" },
 
   version = "*",
   ---@module 'blink.cmp'
@@ -12,5 +12,7 @@ return {
       use_nvim_cmp_as_default = true,
       nerd_font_variant = "mono",
     },
+    -- this is good but "ray-x/lsp_signature.nvim" is better
+    -- signature = { enabled = true },
   },
 }

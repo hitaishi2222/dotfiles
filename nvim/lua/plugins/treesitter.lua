@@ -5,7 +5,7 @@ return {
     local configs = require("nvim-treesitter.configs")
 
     configs.setup({
-      ensure_installed = { "lua", "vim", "vimdoc", "python", "latex", "bash", "markdown" },
+      ensure_installed = { "lua", "vim", "vimdoc", "python", "latex", "bash", "markdown", "html", "css", "tsx" },
       modules = {},
       sync_install = true,
       ignore_install = {},

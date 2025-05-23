@@ -3,6 +3,8 @@ return {
   version = false,
   enable = true,
   config = function()
+    local gen_loader = require("mini.snippets").gen_loader
+
     require("mini.ai").setup()
     require("mini.pairs").setup()
     require("mini.comment").setup()
@@ -20,6 +22,16 @@ return {
     require("mini.indentscope").setup()
     require("mini.basics").setup({ mappings = { windows = true } })
     require("mini.files").setup({ windows = { preview = true, width_focus = 25, width_preview = 75 } })
+    require("mini.snippets").setup({
+      snippets = {
+        -- Load custom file with global snippets first (adjust for Windows)
+        gen_loader.from_file("~/.config/nvim/snippets/global.json"),
+
+        -- Load snippets based on current language by reading files from
+        -- "snippets/" subdirectories from 'runtimepath' directories.
+        gen_loader.from_lang(),
+      },
+    })
     require("mini.statusline").setup({
       use_icons = true,
       content = {

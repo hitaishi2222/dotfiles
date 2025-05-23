@@ -1,0 +1,4 @@
+{
+    "main" : {"prefix": "mn", "body": "def main():\n\t$1\n\nif __name__ == \"__main__\":\n\tmain()", "desc": "main check"},
+    "func" : {"prefix": "def", "body": "def $1($2):\n\t$3", "desc": "def fn"}
+}

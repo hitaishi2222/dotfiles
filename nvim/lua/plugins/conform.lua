@@ -14,6 +14,7 @@ return {
         tex = { "tex-fmt" },
         markdown = { "prettierd" },
         rust = { "rustfmt" },
+        -- typst = { "typstfmt" },
       },
       notify_no_formatters = true,
       formatters = {

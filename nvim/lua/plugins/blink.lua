@@ -14,5 +14,14 @@ return {
     },
     -- this is good but "ray-x/lsp_signature.nvim" is better
     -- signature = { enabled = true },
+    completion = {
+      menu = {
+        draw = {
+          columns = {
+            { "kind_icon", gap = 1, "label", "label_description", gap = 1, "source_name" },
+          },
+        },
+      },
+    },
   },
 }

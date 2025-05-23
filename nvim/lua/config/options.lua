@@ -2,7 +2,6 @@ local opt = vim.opt
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
-opt.scrolloff = 10 -- Number of lines to keep before scrolling
 opt.ignorecase = true -- Ignore case
 opt.cursorline = true -- Enable highlighting of the current line
 opt.mouse = "a" -- Enable mouse mode
@@ -21,11 +20,12 @@ opt.wrap = true -- Disable line wrap
 opt.list = true
 opt.listchars = { tab = "» ", trail = "·" }
 opt.confirm = true
+opt.scrolloff = 15 -- Number of lines to keep before scrolling
 -- vim.go.lazyredraw = true
 vim.g.markdown_recommended_style = 0
 
 -- Specific python environment
-vim.g.python3_host_prog = "~/.pyenv/versions/3.13.0/envs/.zed_env/bin/python"
+vim.g.python3_host_prog = "/home/hiti/.pyenv/versions/3.13.1/bin/python3"
 
 vim.schedule(function()
   vim.opt.clipboard = "unnamedplus"

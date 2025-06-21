@@ -10,5 +10,5 @@ SELECTED=$(find "$WALLPAPER_DIR" -type f \( -iname '*.jpg' -o -iname '*.png' \) 
 # If a file was selected, set it as wallpaper
 if [ -n "$SELECTED" ]; then
     swww img "$SELECTED" --transition-type grow --transition-duration 0.7
-    wal -i $SELECTED
+    wallust run $SELECTED
 fi

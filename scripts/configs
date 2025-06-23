@@ -2,7 +2,7 @@
 
 fzf="fzf --height 40% --layout reverse --border" 
 
-list_options=$(echo "nvim tmux scripts ghostty hyprland" | tr " " "\n")
+list_options=$(echo "nvim tmux scripts zshrc ghostty hyprland" | tr " " "\n")
 
 option=$(printf "$list_options" | $fzf)
 echo $option
@@ -17,6 +17,8 @@ elif [[ $option == "tmux" ]]; then
 elif [[ $option == "scripts" ]]; then
     cd ~/Hiti/dotfiles/scripts/
     nvim .
+elif [[ $option == "zshrc" ]]; then
+    nvim ~/.zshrc
 elif [[ $option == "ghostty" ]]; then
     cd ~/.config/ghostty/
     nvim .

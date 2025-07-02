@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+CONFIG_FILE="$HOME/.config/ghostty/config"
+OLD=$(awk '/background-opacity/ {print $3}' $CONFIG_FILE)
+STEP=0.05
+
+UP=$(echo "$OLD + $STEP" | bc)
+DOWN=$(echo "$OLD - $STEP" | bc)
+
+
+if [ "$1" == up ]; then
+    if [ echo "$OLD == 1" | bc ]; then
+        notify-send -t 600 "ERROR" "Opacity is already as 100%"
+        exit 0
+    else
+        sed -i "/^back/s#$OLD#$UP#" "$CONFIG_FILE"
+        wtype -M ctrl -M shift -k comma -m shift -m ctrl
+        notify-send -t 600 "+ opacity" "Opacity changed to : $UP" 
+    fi
+elif [ "$1" == down ]; then
+    if [ echo "$OLD <= 0" | bc ]; then
+        notify-send -t 600 "ERROR" "Opacity is already as 0%"
+        exit 0
+    else
+        sed -i "/^back/s#$OLD#$DOWN#" "$CONFIG_FILE"
+        wtype -M ctrl -M shift -k comma -m shift -m ctrl
+        notify-send -t 600 "+ opacity" "Opacity changed to : $DOWN" 
+    fi
+elif (( $(echo "$1 >= 0" | bc -l) )) && (( $(echo "$1 <= 1" | bc -l) )); then
+    sed -i "/^back/s#$OLD#$1#" "$CONFIG_FILE"
+    wtype -M ctrl -M shift -k comma -m shift -m ctrl
+    notify-send -t 600 "Set opacity" "Opacity changed to : $1"
+else
+    echo "Invalid command..."
+fi

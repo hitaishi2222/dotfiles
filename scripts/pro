@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+DIR="/home/hiti/Hiti/projects/"
+
+fzf="fzf --height 40% --layout reverse --border"
+
+SELECTED=$(ls "$DIR" | $fzf)
+
+if [ $SELECTED != "" ]; then
+    cd $DIR
+    cd $SELECTED
+    nvim .
+else
+    echo "Nothing selected..."
+fi

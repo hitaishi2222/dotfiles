@@ -2,13 +2,23 @@
 
 # Directory where wallpapers are stored
 WALLPAPER_DIR="$HOME/Pictures/HD_wallpapers/"
+CONFIG_FILE="$HOME/.config/hypr/hyprpaper.conf"
+OLD=$(cat $CONFIG_FILE | awk '/pre/ {print $3}')
+
+# Files to reload
+WAYBAR="$HOME/.config/waybar/style.css"
+TMUX="$HOME/.config/tmux/tmux.conf"
 
 # Get the list of files
 SELECTED=$(find "$WALLPAPER_DIR" -type f \( -iname '*.jpg' -o -iname '*.png' \) \
-    | fzf --preview 'chafa -f symbols --colors truecolor {}' --preview-window=up:70%)
+    | shuf | fzf --preview 'chafa -f symbols --colors truecolor {}' --preview-window=up:70%)
 
 # If a file was selected, set it as wallpaper
 if [ -n "$SELECTED" ]; then
-    hyprctl hyprpaper reload DP-6,$SELECTED
     wallust run $SELECTED
+    sed -i "s#$OLD#$SELECTED#g" "$CONFIG_FILE"
+    sed -i '' $WAYBAR
+    sed -i '' $TMUX
+    killall dunst
+    hyprctl hyprpaper reload DP-6,$SELECTED
 fi

@@ -1,0 +1,28 @@
+/* ~/.klayout/dark_theme.qss */
+
+QWidget {
+    background-color: #2e2e2e;
+    color: #dcdcdc;
+}
+
+QMenuBar, QMenu, QMenu, QToolBar {
+    background-color: #333;
+    color: #dcdcdc;
+}
+
+QLineEdit, QTextEdit, QPlainTextEdit {
+    background-color: #444;
+    color: #eeeeee;
+    border: 1px solid #555;
+}
+
+QTabBar::tab:selected {
+    background: #555;
+}
+
+QPushButton {
+    background-color: #555;
+    border: 1px solid #666;
+    padding: 4px;
+}
+

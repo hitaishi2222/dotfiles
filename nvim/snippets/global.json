@@ -1,3 +1,7 @@
 {
-    "tag" : {"prefix": "tag", "body": "<$1>$2</$1>", "desc": "basic html closing tag"}
+  "tag": {
+    "prefix": "tag",
+    "body": "<$1>$2</$1>",
+    "desc": "basic html closing tag"
+  }
 }

@@ -1,8 +1,27 @@
 {
-    "tag" : {"prefix": "tag", "body": "<$1> $2 </$1>", "desc": "basic html closing tag"},
-    "v-motion" : {"prefix": "v-mo", "body": "<div v-motion\n  :initial=\"{$2}\"\n  :enter=\"{$3}\">\n  $1\n</div>", "desc": "v-motion slidev"},
-    "div-class" : {"prefix": "dc", "body": "<div class=\"$2\">  $1  </div>", "desc": "div-class"},
-    "html-block" : {"prefix": "html", "body": "```html\n  $1\n```", "desc": "html-block"},
-    "python-block" : {"prefix": "python", "body": "```python\n  $1\n```", "desc": "python-block"}
-
+  "tag": {
+    "prefix": "tag",
+    "body": "<$1> $2 </$1>",
+    "desc": "basic html closing tag"
+  },
+  "v-motion": {
+    "prefix": "v-mo",
+    "body": "<div v-motion\n  :initial=\"{$2}\"\n  :enter=\"{$3}\">\n  $1\n</div>",
+    "desc": "v-motion slidev"
+  },
+  "div-class": {
+    "prefix": "dc",
+    "body": "<div class=\"$2\">  $1  </div>",
+    "desc": "div-class"
+  },
+  "html-block": {
+    "prefix": "html",
+    "body": "```html\n  $1\n```",
+    "desc": "html-block"
+  },
+  "python-block": {
+    "prefix": "python",
+    "body": "```python\n  $1\n```",
+    "desc": "python-block"
+  }
 }

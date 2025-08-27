@@ -13,8 +13,10 @@ return {
         python = { "black" },
         tex = { "tex-fmt" },
         markdown = { "prettierd" },
+        json = { "prettierd" },
+        yaml = { "prettierd" },
+        yml = { "prettierd" },
         rust = { "rustfmt" },
-        -- typst = { "typstfmt" },
       },
       notify_no_formatters = true,
       formatters = {

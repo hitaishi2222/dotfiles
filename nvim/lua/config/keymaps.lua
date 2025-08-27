@@ -27,5 +27,23 @@ map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "LSP Rename" })
 map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code-Action" })
 
 map("i", "<C-s>", vim.lsp.buf.signature_help, { desc = "LSP Signature help" })
+map("n", "<leader>cc", "<cmd>ColorizerToggle<cr>", { desc = "Coloriszer Toggle" })
 
--- code companion
+local quarto = require("quarto")
+map("n", "<leader>qp", quarto.quartoPreview, { silent = true, noremap = true, desc = "Quarto Preview" })
+map("n", "<leader>qc", quarto.quartoClosePreview, { silent = true, noremap = true, desc = "Quarto Close Preview" })
+map("n", "<leader>qa", quarto.quartoSendAll, { silent = true, noremap = true, desc = "Quarto Send All" })
+
+-- Typst keymapping
+map(
+  "n",
+  "<leader>tt",
+  "<cmd>TypstPreviewToggle<cr>",
+  { silent = true, noremap = true, desc = "[T]ypstPreview [T]oggle" }
+)
+
+-- python run
+map("n", "<leader>p", function()
+  vim.cmd("w")
+  vim.cmd("!python %")
+end, { desc = "Run python script" })

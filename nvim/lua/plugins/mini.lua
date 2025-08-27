@@ -3,33 +3,26 @@ return {
   version = false,
   enable = true,
   config = function()
-    local gen_loader = require("mini.snippets").gen_loader
-
     require("mini.ai").setup()
-    require("mini.pairs").setup()
     require("mini.comment").setup()
     require("mini.surround").setup()
     require("mini.bracketed").setup()
     -- require("mini.completion").setup()
 
-    require("mini.icons").setup()
-    require("mini.git").setup()
-    require("mini.diff").setup()
     -- require("mini.notify").setup()
     -- require("mini.starter").setup()
-    require("mini.tabline").setup({})
     -- require("mini.animate").setup()
+    require("mini.icons").setup()
+    require("mini.git").setup()
+    -- require("mini.diff").setup()
+    require("mini.sessions").setup()
+    require("mini.tabline").setup({})
     require("mini.indentscope").setup()
     require("mini.basics").setup({ mappings = { windows = true } })
     require("mini.files").setup({ windows = { preview = true, width_focus = 25, width_preview = 75 } })
-    require("mini.snippets").setup({
-      snippets = {
-        -- Load custom file with global snippets first (adjust for Windows)
-        gen_loader.from_file("~/.config/nvim/snippets/global.json"),
-
-        -- Load snippets based on current language by reading files from
-        -- "snippets/" subdirectories from 'runtimepath' directories.
-        gen_loader.from_lang(),
+    require("mini.pairs").setup({
+      mappings = {
+        ["$"] = { action = "open", pair = "$$", neigh_pattern = "[^\\]." },
       },
     })
     require("mini.statusline").setup({
@@ -37,7 +30,7 @@ return {
       content = {
         active = function()
           local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
-          local git = MiniStatusline.section_git({ trunc_width = 40 })
+          local git = MiniStatusline.section_git({ trunc_width = 50 })
           local diff = MiniStatusline.section_diff({ trunc_width = 75 })
           local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
           local lsp = MiniStatusline.section_lsp({ trunc_width = 75 })
@@ -48,7 +41,7 @@ return {
 
           return MiniStatusline.combine_groups({
             { hl = mode_hl, strings = { mode } },
-            { hl = "MiniStatuslineDevinfo", strings = { git, diagnostics } },
+            { hl = "MiniStatuslineDevinfo", strings = { diagnostics } },
             "%<", -- Mark general truncate point
             -- { hl = "MiniStatuslineFilename", strings = { filename } },
             "%=", -- End left alignment

@@ -5,13 +5,14 @@ return {
     local configs = require("nvim-treesitter.configs")
 
     configs.setup({
-      ensure_installed = { "lua", "vim", "vimdoc", "python", "latex", "bash", "markdown", "html", "css", "tsx" },
+      ensure_installed = { "lua", "vim", "vimdoc", "python", "latex", "bash", "markdown", "rust" },
       modules = {},
       sync_install = true,
       ignore_install = {},
       auto_install = false,
       highlight = { enable = true },
       indent = { enable = true },
+      fold = { enable = true },
     })
     -- Latex highlight setup
     vim.cmd([[hi @markup.math guifg=#5D8887 gui=italic]])

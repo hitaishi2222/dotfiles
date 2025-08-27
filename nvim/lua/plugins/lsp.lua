@@ -40,22 +40,26 @@ return {
         end,
       },
     })
+    --Enable (broadcasting) snippet capability for completion
+    local cap = vim.lsp.protocol.make_client_capabilities()
+    cap.textDocument.completion.completionItem.snippetSupport = true
 
-    -- vim.lsp.enable("ty")
-    vim.lsp.enable("mypy")
-    vim.lsp.enable("pyright")
-    vim.lsp.enable("ruff")
+    vim.lsp.config("cssls", { capabilities = cap })
+    vim.lsp.config("html", { capabilities = cap, filetypes = { "html", "markdown" } })
+    vim.lsp.config("emmet_ls", { capabilities = cap, filetypes = { "html", "markdown" } })
+
+    vim.lsp.enable("html")
+    vim.lsp.enable("tailwindcss")
+    vim.lsp.enable("emmet_ls")
+
     local capabilities = require("blink.cmp").get_lsp_capabilities()
+    require("lspconfig").pyright.setup({ capabilities = capabilities })
     require("lspconfig").lua_ls.setup({ capabilities = capabilities })
     require("lspconfig").marksman.setup({ capabilities = capabilities })
     require("lspconfig").texlab.setup({ capabilities = capabilities })
     require("lspconfig").bashls.setup({ capabilities = capabilities })
-    require("lspconfig").rust_analyzer.setup({
-      capabilities = capabilities,
-      on_attach = function(client, bufnr)
-        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-      end,
-    })
+    vim.lsp.config("ruff", { capabilities = capabilities })
+    vim.lsp.enable("ruff")
     require("lspconfig").tinymist.setup({
       capabilities = capabilities,
       settings = {
@@ -77,6 +81,19 @@ return {
             arguments = { vim.v.null },
           }, { bufnr = bufnr })
         end, { desc = "[T]inymist [U]npin", noremap = true })
+      end,
+    })
+    require("lspconfig").rust_analyzer.setup({
+      capabilities = capabilities,
+      settings = {
+        ["rust-analyzer"] = {
+          diagnostics = {
+            enable = false,
+          },
+        },
+      },
+      on_attach = function(client, bufnr)
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
       end,
     })
     require("lspconfig").harper_ls.setup({
@@ -108,27 +125,5 @@ return {
         },
       },
     })
-    local cap = vim.lsp.protocol.make_client_capabilities()
-    cap.textDocument.completion.completionItem.snippetSupport = true
-
-    vim.lsp.config("cssls", {
-      capabilities = { capabilities, cap },
-    })
-    vim.lsp.config("html", {
-      capabilities = { capabilities, cap },
-      filetypes = { "html", "markdown" },
-    })
-    vim.lsp.config("tailwindcss", {
-      capabilities = { capabilities, cap },
-    })
-    vim.lsp.config("emmet_ls", {
-      capabilities = { capabilities, cap },
-      filetypes = { "html", "markdown" },
-    })
-
-    vim.lsp.enable("html")
-    vim.lsp.enable("tailwindcss")
-    vim.lsp.enable("mypy")
-    vim.lsp.enable("emmet_ls")
   end,
 }

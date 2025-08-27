@@ -20,12 +20,18 @@ opt.wrap = true -- Disable line wrap
 opt.list = true
 opt.listchars = { tab = "» ", trail = "·" }
 opt.confirm = true
-opt.scrolloff = 15 -- Number of lines to keep before scrolling
 -- vim.go.lazyredraw = true
+-- opt.scrolloff = 15 -- Number of lines to keep before scrolling
 vim.g.markdown_recommended_style = 0
 
+-- --folding code by treesitter
+-- opt.foldmethod = "expr"
+-- opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- opt.foldenable = true
+vim.opt.foldlevel = 99
+
 -- Specific python environment
-vim.g.python3_host_prog = "/home/hiti/.pyenv/versions/3.13.1/bin/python3"
+vim.g.python3_host_prog = "~/.pyenv/versions/3.13.5/bin/python3"
 
 vim.schedule(function()
   vim.opt.clipboard = "unnamedplus"

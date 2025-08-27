@@ -1,4 +1,23 @@
 {
-    "main" : {"prefix": "mn", "body": "def main():\n\t$1\n\nif __name__ == \"__main__\":\n\tmain()", "desc": "main check"},
-    "func" : {"prefix": "def", "body": "def $1($2):\n\t$3", "desc": "def fn"}
+  "main": {
+    "prefix": "mn",
+    "body": "def main():\n\t$1\n\nif __name__ == \"__main__\":\n\tmain()",
+    "desc": "main check"
+  },
+  "func": { "prefix": "def", "body": "def $1($2):\n\t$3", "desc": "def fn" },
+  "numpy_import": {
+    "prefix": "inp",
+    "body": "import numpy as np\n",
+    "desc": "import numpy"
+  },
+  "matplotlib_import": {
+    "prefix": "iplt",
+    "body": "import matplotlib.pyplot as plt\n",
+    "desc": "import matplotlib pyplot"
+  },
+  "gdsfactory_import": {
+    "prefix": "igf",
+    "body": "import gdsfactory as gf\n",
+    "desc": "import gdsfactory"
+  }
 }

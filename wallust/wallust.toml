@@ -1,0 +1,22 @@
+backend = "full"
+color_space = "lch"
+check_contrast = true
+saturate = 20
+palette = "dark16"
+# fallback_generator = "complementary"
+
+[templates]
+# rofi.template = 'colors-rofi.rasi'
+# rofi.target = '~/.config/rofi/shared/colors.rasi'
+waybar.template = 'colors-waybar.css'
+waybar.target = '~/.config/waybar/colors-wallust.css'
+hypr.template = 'colors-hypr.conf'
+hypr.target = '~/.config/hypr/wallust.conf'
+ghostty.template = 'colors-ghostty.conf'
+ghostty.target = '~/.config/ghostty/themes/wallust'
+tmux.template = 'colors-tmux.conf'
+tmux.target = '~/.config/tmux/colors.conf'
+dunst.template = 'colors-dunst'
+dunst.target = '~/.config/dunst/dunstrc'
+sys.template = 'sys.rasi'
+sys.target = '~/Hiti/dotfiles/scripts/rofi_scripts/sys.rasi'

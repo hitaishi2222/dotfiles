@@ -20,5 +20,5 @@ if [ -n "$SELECTED" ]; then
     sed -i '' $WAYBAR
     sed -i '' $TMUX
     killall dunst
-    hyprctl hyprpaper reload DP-6,$SELECTED
+    hyprctl hyprpaper reload eDP-1,$SELECTED
 fi

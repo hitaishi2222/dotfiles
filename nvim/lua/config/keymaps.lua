@@ -1,6 +1,12 @@
 vim.cmd("imap jj <ESC>")
 vim.cmd("imap jk <ESC>")
 vim.cmd("imap kj <ESC>")
+
+vim.cmd("map <C-h> <C-w>h")
+vim.cmd("map <C-j> <C-w>j")
+vim.cmd("map <C-k> <C-w>k")
+vim.cmd("map <C-l> <C-w>l")
+
 vim.g.autoformat = true
 -- vim.g.lazyvim_picker = "auto"
 -- vim.g.lazyvim_cmp = "auto"

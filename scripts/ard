@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+fzf="fzf --height 40% --layout reverse --border" 
+
+list_options=$(echo "board monitor core sketch" | tr " " "\n")
+
+option=$(printf "$list_options" | $fzf)
+echo $option
+
+if [[ $option == "board" ]]; then
+    board_options=$(echo "list listall attach" | tr " " "\n")
+    board_option=$(printf "$board_options" | $fzf)
+    echo $board_option
+    arduino-cli board $board_option
+elif [[ $option == "monitor" ]]; then
+    monitor_options=$(echo "ttyACM0 ttyUSB0" | tr " " "\n")
+    monitor_option=$(printf "$monitor_options" | $fzf)
+    echo $monitor_option
+    arduino-cli monitor -p /dev/$monitor_option
+elif [[ $option == "core" ]]; then
+    echo "core list"
+    arduino-cli core list
+elif [[ $option == "sketch" ]]; then
+    read -p "Enter the new sketch name: " NEW_SKETCH
+    arduino-cli sketch new $NEW_SKETCH
+else echo "Not selected anything..."
+fi
+
+
+

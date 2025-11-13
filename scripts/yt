@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+fzf="fzf --height 40% --layout reverse --border" 
+
+list_options=$(echo "mp3 mp4" | tr " " "\n")
+
+option=$(printf "$list_options" | $fzf)
+echo $option
+
+if [[ $option == "mp3" ]]; then
+    read -p "Enter the link: " AUDIO_LINK
+    if [[ -z $AUDIO_LINK ]]; then
+        echo "got no links to proceed.."
+        exit
+    fi
+    read -p "Enter the name to mp3 (without extension): " AUDIO_NAME
+    if [[ -z $AUDIO_NAME ]]; then
+        echo "got no name.. defaulting to TITLE"
+        $AUDIO_NAME = "%(title)s"
+    fi
+    yt-dlp -t mp3 $AUDIO_LINK -o $AUDIO_NAME.mp3
+else
+    read -p "Enter the link: " VIDEO_LINK
+    if [[ -z $VIDEO_LINK ]]; then
+        echo "got no links to proceed.."
+        exit
+    fi
+    read -p "Enter the name to mp4 (without extension): " VIDEO_NAME
+    if [[ -z $VIDEO_NAME ]]; then
+        echo "got no name.. defaulting to TITLE"
+        $VIDEO_NAME = "%(title)s"
+    fi
+    yt-dlp -t mp4 $VIDEO_LINK -o $VIDEO_NAME.mp4
+fi

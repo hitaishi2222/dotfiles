@@ -17,15 +17,12 @@ return {
   },
   {
     "folke/tokyonight.nvim",
-    event = "VeryLazy",
     opts = {},
   },
-  {
-    "vague2k/vague.nvim",
-    event = "VeryLazy",
-  },
-  {
-    "webhooked/kanso.nvim",
-    event = "VeryLazy",
-  },
+  { "vague2k/vague.nvim" },
+  { "webhooked/kanso.nvim" },
+  { "kuri-sun/yoda.nvim" },
+  { "marko-cerovac/material.nvim", event = "VeryLazy" },
+  { "mhartington/oceanic-next" },
+  { "titanzero/zephyrium" },
 }

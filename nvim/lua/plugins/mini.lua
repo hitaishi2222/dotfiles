@@ -3,21 +3,17 @@ return {
   version = false,
   enable = true,
   config = function()
+    require("mini.deps").setup({})
     require("mini.ai").setup()
     require("mini.comment").setup()
     require("mini.surround").setup()
     require("mini.bracketed").setup()
-    -- require("mini.completion").setup()
-
-    -- require("mini.notify").setup()
-    -- require("mini.starter").setup()
-    -- require("mini.animate").setup()
     require("mini.icons").setup()
     require("mini.git").setup()
-    -- require("mini.diff").setup()
     require("mini.sessions").setup()
     require("mini.tabline").setup({})
     require("mini.indentscope").setup()
+    require("mini.cursorword").setup()
     require("mini.basics").setup({ mappings = { windows = true } })
     require("mini.files").setup({ windows = { preview = true, width_focus = 25, width_preview = 75 } })
     require("mini.pairs").setup({

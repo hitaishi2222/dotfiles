@@ -4,10 +4,12 @@ vim.g.maplocalleader = " "
 require("config.lazy")
 require("config.options")
 require("config.keymaps")
-vim.cmd("colorscheme catppuccin-mocha")
-vim.cmd([[
-  hi Normal guibg=NONE ctermbg=NONE
-  hi NormalNC guibg=NONE ctermbg=NONE
-  hi NormalFloat guibg=NONE ctermbg=NONE
-  hi Pmenu guibg=NONE ctermbg=NONE
-]])
+
+vim.cmd("colorscheme miniautumn")
+
+-- vim.cmd([[
+--   hi Normal guibg=NONE ctermbg=NONE
+--   hi NormalNC guibg=NONE ctermbg=NONE
+--   hi NormalFloat guibg=NONE ctermbg=NONE
+--   hi Pmenu guibg=NONE ctermbg=NONE
+-- ]])

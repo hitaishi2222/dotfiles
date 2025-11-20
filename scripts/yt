@@ -18,7 +18,7 @@ if [[ $option == "mp3" ]]; then
         echo "got no name.. defaulting to TITLE"
         $AUDIO_NAME = "%(title)s"
     fi
-    yt-dlp -t mp3 $AUDIO_LINK -o $AUDIO_NAME.mp3
+    yt-dlp -f ba -t mp3 $AUDIO_LINK -o $AUDIO_NAME.mp3
 else
     read -p "Enter the link: " VIDEO_LINK
     if [[ -z $VIDEO_LINK ]]; then

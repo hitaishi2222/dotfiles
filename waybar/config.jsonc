@@ -16,8 +16,8 @@
     // positions generated based on config.ctl //
 
     "modules-left": ["custom/smallspacer","hyprland/workspaces","custom/spacer","hyprland/window"],
-    "modules-center": ["custom/padd","mpris","custom/padd"],
-    "modules-right": ["custom/padd","custom/l_end","group/expand","network","group/expand-3","group/expand-2","group/expand-4","memory","cpu","clock","custom/padd"],
+    "modules-center": ["custom/padd","mpris","mpd","custom/padd"],
+    "modules-right": ["custom/padd","custom/l_end","group/expand","battery","network","group/expand-3","memory","cpu","bluetooth","clock","custom/padd"],
 
 
     // sourced from modules based on config.ctl //
@@ -47,6 +47,34 @@
             "click-to-reveal": true
         },
         // "modules": ["upower","upower/headset"]
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+        // "format-disconnected": "Disconnected ",
+        "format-stopped": "",
+        "interval": 10,
+        "consume-icons": {
+            "on": " " // Icon shows only when "consume" is on
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)",
+        "on-click": "rmpc togglepause",
+        "on-click-middle": "rmpc prev",
+        "on-click-right": "rmpc next",
     },
 
     "custom/smallspacer":{
@@ -78,7 +106,11 @@
         "status-icons": {
             "paused": "▶" 
         },
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-click-middle": "playerctl previous",
     },
+
     "tray": {
         "icon-size": 16,
         "rotate": 0,
@@ -130,6 +162,8 @@
         "icon-size": 13,
         "rewrite":{
             "(.*)ghostty(.*)": "Ghostty",
+            "(.*)okular(.*)": "Okular",
+            "(.*)kdenlive": "Kden Live",
         }
     },
 
@@ -150,8 +184,8 @@
         "all-outputs": true,
         "format": "{icon}",
         "format-icons": {
-            "active": " ",
-            "default": " ",
+            "default": " ",
+            "active": " ",
             "empty": " "
         },
         "persistent-workspaces": {
@@ -263,7 +297,7 @@
     },
 
     "clock": {
-        "format": "{:%I:%M %p | %d-%m-%y}",
+        "format": "{:%I:%M %p | %d/%m/%Y | %a}",
         "rotate": 0,
         "on-click": "/usr/local/bin/ags -t ActivityCenter",
         "tooltip-format": "<tt>{calendar}</tt>",
@@ -299,9 +333,9 @@
         "format-charging": "<span color='#a6d189'>󱐋</span>",
         "format-plugged": "󰂄",
         // "format-alt": "<<span weight='bold' color='#c2864a'>{time} <span weight='bold' color='white'>| <span weight='bold' color='#82d457'>{capacity}%</span></span></span>",
-        "format-icons": ["󰝦","󰪞","󰪟","󰪠","󰪡","󰪢","󰪣","󰪤","󰪥"],
+        // "format-icons": ["󰝦","󰪞","󰪟","󰪠","󰪡","󰪢","󰪣","󰪤","󰪥"],
         //  "format-icons": ["","","","","","","",""],  
-        //"format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "on-click-right": "pkill waybar & hyprctl dispatch exec waybar",
         //  "format-icons": [<i class='fa-solid fa-wifi-slash'></i>],
 
@@ -341,7 +375,7 @@
     "network": {
         "tooltip": true,
         "format-wifi": "{icon} ",
-        "format-icons": ["󰤟", "󰤢", "󰤥"],
+        "format-icons": ["󰤟 ", "󰤢 ", "󰤥 "],
         //  "format-wifi": "<i class='fa-solid fa-wifi-slash'></i>",
         "rotate": 0,
         "format-ethernet": "󰈀 ",
@@ -483,4 +517,14 @@
         "device": "pulseaudio",
         "scroll-step": 1,
     },
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+    }
 }

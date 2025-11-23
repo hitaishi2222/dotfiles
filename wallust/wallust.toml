@@ -6,8 +6,6 @@ palette = "dark16"
 # fallback_generator = "complementary"
 
 [templates]
-# rofi.template = 'colors-rofi.rasi'
-# rofi.target = '~/.config/rofi/shared/colors.rasi'
 waybar.template = 'colors-waybar.css'
 waybar.target = '~/.config/waybar/colors-wallust.css'
 hypr.template = 'colors-hypr.conf'
@@ -20,3 +18,5 @@ dunst.template = 'colors-dunst'
 dunst.target = '~/.config/dunst/dunstrc'
 sys.template = 'sys.rasi'
 sys.target = '~/Hiti/dotfiles/scripts/rofi_scripts/sys.rasi'
+rofi.template = 'rounded-template.rasi'
+rofi.target = '~/Hiti/dotfiles/scripts/rofi_scripts/rounded-template.rasi'

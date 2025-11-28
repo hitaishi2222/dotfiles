@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+fzf="fzf --height 40% --layout reverse --border"
+
+xiao21="/home/hiti/Hiti/dotfiles/scripts/boards_pins/samd_pins.jpg"
+unoR3="/home/hiti/Hiti/dotfiles/scripts/boards_pins/Uno_R3_pinout.png"
+unoR4="/home/hiti/Hiti/dotfiles/scripts/boards_pins/R4_pin_out.jpg"
+
+if command -v ristretto &> /dev/null;then
+    echo "Select Board"
+else
+    echo "ristretto is not installed. Install it or use your preferrable image viewer."
+fi
+
+option=$(printf "Seeed Studio XIAO-SAMD21\nUNO R3\nUNO R4 EK" | $fzf)
+echo "$option"
+[[ -z "$option" ]] && exit
+
+
+case $option in
+    "Seeed Studio XIAO-SAMD21")
+        ristretto "$xaio21"
+        ;;
+
+    "UNO R3")
+        ristretto "$unoR3"
+        ;;
+
+    "UNO R4 EK")
+        ristretto "$unoR4"
+        ;;
+    *)
+        echo "Nothing Selected"
+        ;;
+esac

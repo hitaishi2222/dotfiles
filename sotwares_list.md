@@ -25,3 +25,11 @@ Notes & plans -> Obsidian
 Image Viewer -> Ristretto
 Termianl file-manager -> Yazi
 File manager -> dolphin
+GTK-Theme -> Orchis
+Linux-Mobile Link -> PC Link (FOSS)
+
+-> Install tinymist through:
+cargo install --git https://github.com/Myriad-Dreamin/tinymist --locked tinymist-cli
+
+-> Freecad Changes to work in hyprland:
+Go to `/usr/share/applications/org.freecad.FreeCAD.desktop` and change: Exec=env QT_QPA_PLATFORM=xcb freecad %F

@@ -17,7 +17,7 @@
 
     "modules-left": ["custom/smallspacer","hyprland/workspaces","custom/spacer","hyprland/window"],
     "modules-center": ["custom/padd","mpris","mpd","custom/padd"],
-    "modules-right": ["custom/padd","custom/l_end","group/expand","battery","network","group/expand-3","memory","cpu","bluetooth","clock","custom/padd"],
+    "modules-right": ["custom/padd","custom/l_end","group/expand","network","group/expand-3","memory","cpu","battery","bluetooth","clock","custom/padd"],
 
 
     // sourced from modules based on config.ctl //
@@ -49,8 +49,10 @@
         // "modules": ["upower","upower/headset"]
     },
     "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+        "server": "/tmp/mpd_socket",
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} {title} | {artist} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
         // "format-disconnected": "Disconnected ",
+        "max-length": 40,
         "format-stopped": "",
         "interval": 10,
         "consume-icons": {
@@ -328,7 +330,7 @@
             "warning": 30,
             "critical": 20
         },
-        "format": "{icon}",
+        "format": "{icon}{capacity}%",
         "rotate": 0,
         "format-charging": "<span color='#a6d189'>󱐋</span>",
         "format-plugged": "󰂄",

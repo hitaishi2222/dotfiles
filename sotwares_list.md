@@ -15,7 +15,7 @@ Status Bar -> Waybar
 Audio -> Pulsewire
 Terminal Music Player -> RMPC (MPD Backend)
 Clipboard Manager -> Clipcat (Rust)
-Screenshot Manager -> hyprshot
+Screenshot Manager -> grimblast
 Wallpaper Manager -> Hyprpaper
 Color picker Manager -> hyprpicker
 Color-Theme Config -> Wallust (rust)

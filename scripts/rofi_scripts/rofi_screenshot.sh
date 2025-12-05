@@ -2,23 +2,26 @@
 
 theme="$HOME/Hiti/dotfiles/scripts/rofi_scripts/rounded-template.rasi"
 OUTDIR="$HOME/Pictures/screenshots"
+mkdir -p "$OUTDIR"
 
-list_options=$(echo "copy_region save_region copy_window save_window copy_active_screen save_active_screen" | tr " " "\n")
-
-selected=$(printf "$list_options" | rofi -dmenu -p "do: " -theme ${theme})
-
-if [[ $selected == "copy_region" ]]; then
-    hyprshot -m region --clipboard-only
-elif [[ $selected == "save_region" ]]; then
-    hyprshot -m region -o $OUTDIR
-elif [[ $selected == "copy_window" ]]; then
-    hyprshot -m window --clipboard-only
-elif [[ $selected == "save_window" ]]; then
-    hyprshot -m window -o $OUTDIR
-elif [[ $selected == "copy_active_screen" ]]; then
-    hyprshot -m active -m output --clipboard-only
-elif [[ $selected == "save_active_screen" ]]; then
-    hyprshot -m active -m output -o $OUTDIR
-else
-    notify-send "System..." "Nothing selected: Back to work..."
+grimblast="$HOME/Hiti/dotfiles/scripts/grimblast"
+if [ ! -f "$grimblast" ]; then
+    echo "Grimblast script is missing. Check the path or download the script."
 fi
+
+choice=$(printf "Full screen\nActive window\nSelect area\nCopy area" | rofi -dmenu -p "Screenshot" -theme ${theme})
+
+case "$choice" in
+    "Full screen")
+        $grimblast save screen "$DIR/screen_$(date +%s).png"
+        ;;
+    "Active window")
+        $grimblast save window "$DIR/window_$(date +%s).png"
+        ;;
+    "Select area")
+        $grimblast save area "$DIR/area_$(date +%s).png"
+        ;;
+    "Copy area")
+        $grimblast copy area
+        ;;
+esac

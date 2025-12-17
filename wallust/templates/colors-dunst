@@ -58,7 +58,7 @@ separator_color= "{{color7}}"
 per_monitor_dpi = false
 
 [urgency_normal]
-timeout = 1
+timeout = 2
 background = "{{color2}}"
 foreground = "{{background}}"
 highlight = "{{foreground}}"

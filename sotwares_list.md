@@ -1,6 +1,7 @@
 # Software I have been using lately
 
 OS / Distro -> Arch Linux
+Login/Greeter -> greetd
 Window Manager -> Hyprland
 Browser -> Zen
 Terminal -> Ghostty

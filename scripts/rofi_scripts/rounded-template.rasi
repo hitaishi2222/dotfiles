@@ -2,14 +2,14 @@
 /* Author: Newman Sanchez (https://github.com/newmanls) */
 
 * {
-    bg0: #CA6C41;
-    bg1: #A77847;
-    bg2: #AE7A5F;
-    bg3: #F8560D;
-    fg0: #444246;
-    fg1: #F7DE9A;
-    fg2: #F7DE9A;
-    fg3: #4D4853;
+    bg0: #B1A420;
+    bg1: #72BCBF;
+    bg2: #95A5C9;
+    bg3: #ECDB2B;
+    fg0: #474643;
+    fg1: #F5EFE9;
+    fg2: #F5EFE9;
+    fg3: #7C8772;
 
     font: "JetBrainsMono NL 13";
 

@@ -11,12 +11,13 @@ $git_commit\
 $git_status\
 $git_metrics\
 $git_state\
-$cmd_duration\
 
 $fill \
 
+$custom\
 $python\
 $rust\
+$cmd_duration\
 
 $line_break\
 
@@ -185,7 +186,7 @@ format = '( [$symbol( $version)]($style) )'
 
 [python]
 symbol = " "
-style = "fg:color_env"
+style = "fg:#228b22"
 format = '( [$symbol( $version)( $virtualenv)]($style) )'
 version_format = '${raw}'
 
@@ -194,7 +195,7 @@ symbol = "󰟔 "
 
 [rust]
 symbol = "󱘗 "
-style = "fg:color_danger"
+style = "fg:#ff4500"
 format = '( [$symbol( $version)]($style) )'
 
 [swift]
@@ -204,3 +205,9 @@ symbol = " "
 symbol = " "
 style = "fg:color_env"
 format = '( [$symbol( $version)]($style) )'
+
+[custom.typst]
+symbol = ""
+style = "fg:#00ffff"
+detect_extensions = ["typ"]
+

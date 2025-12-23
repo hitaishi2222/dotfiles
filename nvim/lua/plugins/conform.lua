@@ -17,6 +17,7 @@ return {
         yaml = { "prettierd" },
         yml = { "prettierd" },
         rust = { "rustfmt" },
+        typst = { "typstyle" },
       },
       notify_no_formatters = true,
       formatters = {

@@ -72,6 +72,8 @@ return {
       capabilities = capabilities,
       settings = {
         exportPdf = "onType",
+        formatterMode = "typstyle",
+        lint = true,
       },
       on_attach = function(client, bufnr)
         vim.keymap.set("n", "<leader>tp", function()
@@ -80,8 +82,9 @@ return {
             command = "tinymist.pinMain",
             arguments = { vim.api.nvim_buf_get_name(0) },
           }, { bufnr = bufnr })
-          vim.keymap.set("n", "<leader>tu", function() end, { desc = "[T]inymist [P]in", noremap = true })
+        end, { desc = "[T]inymist [P]in", noremap = true })
 
+        vim.keymap.set("n", "<leader>tu", function()
           client:exec_cmd({
             title = "unpin",
             command = "tinymist.pinMain",
@@ -146,13 +149,14 @@ return {
         "arduino:renesas_uno:unor4wifi",
       },
     })
+    vim.lsp.enable("pyrefly")
     vim.lsp.enable("lua_ls")
     vim.lsp.enable("marksman")
     vim.lsp.enable("texlab")
     vim.lsp.enable("bashls")
     vim.lsp.enable("ruff")
     vim.lsp.enable("tinymist")
-    vim.lsp.enable("pyright")
+    -- vim.lsp.enable("pyright")
     vim.lsp.enable("rust_analyzer")
     vim.lsp.enable("html")
     vim.lsp.enable("tailwindcss")

@@ -1,7 +1,7 @@
 {
   "a4_roman": {
     "prefix": "a4_roman",
-    "body": "#set page(paper: \"a4\")\n#set text(font: \"Times New Roman\")\n#set par(justify: true)",
+    "body": "#set page(paper: \"a4\")\n#set text(font: \"Times New Roman\", size: 13pt)\n#set par(justify: true)",
     "desc": "A4-Roaman-Justify"
   },
   "cetz-plot": {

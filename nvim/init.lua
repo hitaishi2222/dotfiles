@@ -5,7 +5,8 @@ require("config.lazy")
 require("config.options")
 require("config.keymaps")
 
-vim.cmd("colorscheme miniautumn")
+vim.cmd("colorscheme neopywal")
+-- vim.cmd("colorscheme rose-pine-main")
 
 -- vim.cmd([[
 --   hi Normal guibg=NONE ctermbg=NONE

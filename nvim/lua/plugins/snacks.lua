@@ -12,7 +12,9 @@ return {
     },
     lazygit = {},
     input = {},
+    -- image = {},
     dashboard = {},
+    bigfile = {},
     notifier = {
       enabled = true,
     },

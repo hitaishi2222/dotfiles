@@ -1,9 +1,27 @@
-theme = catppuccin-mocha
-shell-integration = zsh
-font-size = 14
-focus-follows-mouse = true
-mouse-hide-while-typing = true
-initial-command = tmux
-link-url = true
-window-decoration = false
+theme = wallust
+# quick-terminal-position = center
+# quick-terminal-size = 50%
+# gtk-quick-terminal-layer = overlay
 
+font-size = 13
+link-url = true
+initial-command = tmux
+background-opacity = 0.8
+shell-integration = zsh
+window-decoration = false
+focus-follows-mouse = true
+cursor-invert-fg-bg = true
+confirm-close-surface = false
+mouse-hide-while-typing = true
+font-family = JetBrainsMono Nerd Font
+auto-update = check
+app-notifications = false
+window-padding-x = 10,10
+window-padding-balance = true
+
+
+keybind = global:ctrl+0=toggle_quick_terminal
+
+# custom-shader = shaders/cursur_blaze.glsl
+# custom-shader = shaders/cursur_smear.glsl
+# custom-shader = shaders/cursur_smear_fade.glsl

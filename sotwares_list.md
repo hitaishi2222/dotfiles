@@ -13,7 +13,7 @@ Editor -> Neovim
 Aplication Launcher -> rofi-wayland
 REPL -> VS Code
 Status Bar -> Waybar
-Audio -> Pulsewire
+Audio -> Pulsewire with hyprpwcenter
 Terminal Music Player -> RMPC (MPD Backend)
 Clipboard Manager -> Clipcat (Rust)
 Screenshot Manager -> grimblast

@@ -21,8 +21,13 @@ return {
   },
   { "vague2k/vague.nvim" },
   { "webhooked/kanso.nvim" },
-  { "kuri-sun/yoda.nvim" },
-  { "marko-cerovac/material.nvim", event = "VeryLazy" },
-  { "mhartington/oceanic-next" },
-  { "titanzero/zephyrium" },
+  {
+    "RedsXDD/neopywal.nvim",
+    name = "neopywal",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent_background = true,
+    },
+  },
 }

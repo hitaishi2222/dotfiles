@@ -28,7 +28,9 @@ vim.g.markdown_recommended_style = 0
 -- opt.foldmethod = "expr"
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- opt.foldenable = true
+
 vim.opt.foldlevel = 99
+vim.opt.shell = "/bin/bash"
 
 -- Specific python environment
 vim.g.python3_host_prog = "~/.pyenv/versions/3.13.5/bin/python3"

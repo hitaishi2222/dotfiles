@@ -3,7 +3,7 @@
 # Directory where wallpapers are stored
 WALLPAPER_DIR="$HOME/Pictures/HD_wallpapers/"
 CONFIG_FILE="$HOME/.config/hypr/hyprpaper.conf"
-OLD=$(cat $CONFIG_FILE | awk '/pre/ {print $3}')
+OLD=$(cat $CONFIG_FILE | awk '/path/ {print $3}')
 
 # Files to reload
 WAYBAR="$HOME/.config/waybar/style.css"
@@ -20,5 +20,5 @@ if [ -n "$SELECTED" ]; then
     sed -i '' $WAYBAR
     sed -i '' $TMUX
     killall dunst
-    hyprctl hyprpaper reload eDP-1,$SELECTED
+    hyprctl hyprpaper wallpaper eDP-1,$SELECTED
 fi

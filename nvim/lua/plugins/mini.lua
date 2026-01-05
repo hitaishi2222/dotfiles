@@ -1,18 +1,19 @@
 return {
-  "echasnovski/mini.nvim",
+  "nvim-mini/mini.nvim",
   enable = true,
   config = function()
     require("mini.deps").setup({})
-    require("mini.surround").setup()
-    require("mini.bracketed").setup()
-    require("mini.comment").setup()
-    require("mini.ai").setup()
-    require("mini.icons").setup()
-    require("mini.git").setup()
-    require("mini.sessions").setup()
+    require("mini.cmdline").setup({})
+    require("mini.surround").setup({})
+    require("mini.bracketed").setup({})
+    require("mini.comment").setup({})
+    require("mini.ai").setup({})
+    require("mini.icons").setup({})
+    require("mini.git").setup({})
+    require("mini.sessions").setup({})
     require("mini.tabline").setup({})
-    require("mini.indentscope").setup()
-    require("mini.cursorword").setup()
+    require("mini.indentscope").setup({})
+    require("mini.cursorword").setup({})
     require("mini.basics").setup({ mappings = { windows = true } })
     require("mini.files").setup({ windows = { preview = true, width_focus = 25, width_preview = 75 } })
     require("mini.pairs").setup({

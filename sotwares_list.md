@@ -11,12 +11,13 @@ Keyboard Keys Manager -> Kanata
 Font -> JetBrains Mono Nerd Font
 Editor -> Neovim
 Aplication Launcher -> rofi-wayland
+Battery Manager -> auto-cpufreq
 REPL -> VS Code
 Status Bar -> Waybar
 Audio -> Pulsewire with hyprpwcenter
 Terminal Music Player -> RMPC (MPD Backend)
 Clipboard Manager -> Clipcat (Rust)
-Screenshot Manager -> grimblast
+Screenshot Manager -> hyprshot
 Wallpaper Manager -> Hyprpaper
 Color picker Manager -> hyprpicker
 Color-Theme Config -> Wallust (rust)

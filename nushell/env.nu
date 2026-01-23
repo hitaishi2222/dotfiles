@@ -14,7 +14,7 @@ $env.PROMPT_INDICATOR_VI_INSERT = ""
 
 
 #PATHS
-let HOME = $nu.home-path
+let HOME = $nu.HOME
 $env.Path = ($env.Path | prepend '/usr/local/bins')
 $env.Path = ($env.Path | append $'($HOME)/go/bin/')
 $env.Path = ($env.Path | append $'($HOME)/.local/bin')

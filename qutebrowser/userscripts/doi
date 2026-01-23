@@ -1,0 +1,19 @@
+#!/home/hiti/.pyenv/versions/3.13.7/bin/python
+
+import os
+
+
+def qute_command(command):
+    with open(os.environ["QUTE_FIFO"], "w") as fifo:
+        fifo.write(command + "\n")
+        fifo.flush()
+
+
+mode = os.getenv("QUTE_MODE")
+url = os.getenv("QUTE_URL")
+
+
+# if mode != "hints":
+#     qute_command(f"message-error {mode}")
+# else:
+qute_command(f"open -t https://pismin.com/{url}")

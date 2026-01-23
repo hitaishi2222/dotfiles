@@ -24,18 +24,17 @@ fi
 # Inform the user that the speed test is starting.
 echo "Running internet speed test..."
 
-# Execute speedtest-cli with the --csv option to get the results in a parsable format.
-speedtest_output=$(speedtest-cli --secure --json)
+# Execute speedtest-cli with the --json option to get the results in a parsable format.
+speedtest_output=$(/usr/bin/speedtest-cli --secure --json)
 
-# Extract the download and upload speeds from the CSV output using awk.
-# The download speed is the 7th field and upload speed is the 8th field.
-download_speed_bits=$(echo "$speedtest_output" | jq -r '.download')
-upload_speed_bits=$(echo "$speedtest_output" | jq -r '.upload')
+# Extract the download and upload speeds from the JSON output using jq.
+download_speed_bits=$(echo "$speedtest_output" | /usr/bin/jq -r '.download')
+upload_speed_bits=$(echo "$speedtest_output" | /usr/bin/jq -r '.upload')
 
 # Convert the speeds from bits per second to megabits per second (Mbps) for readability.
 # The 'bc' command is used for floating-point arithmetic.
-download_speed_mbps=$(echo "scale=2; $download_speed_bits / 1000000" | bc)
-upload_speed_mbps=$(echo "scale=2; $upload_speed_bits / 1000000" | bc)
+download_speed_mbps=$(echo "scale=2; $download_speed_bits / 1000000" | /usr/bin/bc)
+upload_speed_mbps=$(echo "scale=2; $upload_speed_bits / 1000000" | /usr/bin/bc)
 
 # Get the current date and time in a standard format.
 current_date=$(date +"%Y-%m-%d")

@@ -21,4 +21,5 @@ if [ -n "$SELECTED" ]; then
     sed -i '' $TMUX
     killall dunst
     hyprctl hyprpaper wallpaper eDP-1,$SELECTED
+    qutebrowser ':config-source'
 fi

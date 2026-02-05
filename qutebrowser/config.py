@@ -45,6 +45,9 @@ c.content.pdfjs = True
 c.content.autoplay = False
 c.downloads.position = "bottom"
 c.url.auto_search = "dns"
+c.url.default_page = "https://search.hitaishiv.com"
+# c.tabs.show = "switching"
+c.statusbar.show = "in-mode"
 c.editor.command = [
     "ghostty",
     "-e",
@@ -62,7 +65,9 @@ c.url.searchengines = {
     "y": "https://www.youtube.com/results?search_query={}",
     "s": "https://scholar.google.com/scholar?q={}",
     "G": "https://github.com/search?q={}",
-    "DEFAULT": "https://duckduckgo.com/?q={}",
+    "ar": "https://arxivxplorer.com/?q={}",
+    "d": "https://duckduckgo.com/?q={}",
+    "DEFAULT": "https://search.hitaishiv.com/search?q={}",
 }
 c.tabs.padding = {"top": 3, "bottom": 3, "left": 10, "right": 5}
 c.statusbar.padding = {"top": 3, "bottom": 3, "left": 5, "right": 10}

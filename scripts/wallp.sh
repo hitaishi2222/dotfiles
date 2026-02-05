@@ -5,6 +5,10 @@ WALLPAPER_DIR="$HOME/Pictures/HD_wallpapers/"
 CONFIG_FILE="$HOME/.config/hypr/hyprpaper.conf"
 OLD=$(cat $CONFIG_FILE | awk '/path/ {print $3}')
 
+#hyprlock
+HYPRLOCK_FILE="$HOME/.config/hypr/hyprlock.conf"
+OLDH=$(cat $CONFIG_FILE | awk '/path/ {print $3}')
+
 # Files to reload
 WAYBAR="$HOME/.config/waybar/style.css"
 TMUX="$HOME/.config/tmux/tmux.conf"
@@ -17,6 +21,7 @@ SELECTED=$(find "$WALLPAPER_DIR" -type f \( -iname '*.jpg' -o -iname '*.png' \) 
 if [ -n "$SELECTED" ]; then
     wallust run $SELECTED
     sed -i "s#$OLD#$SELECTED#g" "$CONFIG_FILE"
+    sed -i "s#$OLDH#$SELECTED#g" "$HYPRLOCK_FILE"
     sed -i '' $WAYBAR
     sed -i '' $TMUX
     killall dunst

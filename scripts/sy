@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Check if a word is provided
+if [ -z "$1" ]; then
+    echo "Usage: $0 <word>"
+    exit 1
+fi
+
+WORD="$1"
+
+# Fetch synonyms using the datamuse API and pipe to Rofi
+SELECTED_SYNONYM=$(curl -s "https://api.datamuse.com/words?ml=${WORD}&max=7" | jq -r '.[] | .word' | rofi -dmenu -p "Synonyms for ${WORD}:")
+
+# If a synonym is selected, copy it to the clipboard
+if [ -n "${SELECTED_SYNONYM}" ]; then
+    echo "${SELECTED_SYNONYM}" | wl-copy
+    echo "Copied '${SELECTED_SYNONYM}' to clipboard."
+else
+    echo "No synonym selected."
+fi

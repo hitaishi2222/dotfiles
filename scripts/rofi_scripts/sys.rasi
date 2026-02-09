@@ -5,8 +5,8 @@ configuration {
 }
 
 * {
-    background-color: #000107;
-    text-color: #949DA5;
+    background-color: #3B3D41;
+    text-color: #8E8361;
     border: 1px;
     border-radius: 20px;
 }
@@ -37,7 +37,7 @@ inputbar {
 
 element {
     enabled: true;
-    text-color: #949DA5;
+    text-color: #8E8361;
     cursor: pointer;
     padding: 5px;
 }
@@ -52,8 +52,8 @@ element-text {
 }
 
 element selected {
-    background-color: #7F7880;
-    text-color: #000107;
+    background-color: #6D6663;
+    text-color: #3B3D41;
 }
 
 

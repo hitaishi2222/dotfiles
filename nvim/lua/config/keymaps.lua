@@ -35,10 +35,6 @@ map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code-Action" })
 map("i", "<C-s>", vim.lsp.buf.signature_help, { desc = "LSP Signature help" })
 map("n", "<leader>cc", "<cmd>ColorizerToggle<cr>", { desc = "Coloriszer Toggle" })
 
-local quarto = require("quarto")
-map("n", "<leader>qp", quarto.quartoPreview, { silent = true, noremap = true, desc = "Quarto Preview" })
-map("n", "<leader>qc", quarto.quartoClosePreview, { silent = true, noremap = true, desc = "Quarto Close Preview" })
-map("n", "<leader>qa", quarto.quartoSendAll, { silent = true, noremap = true, desc = "Quarto Send All" })
 
 -- Typst keymapping
 map(

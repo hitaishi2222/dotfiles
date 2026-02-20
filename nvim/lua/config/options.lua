@@ -33,7 +33,7 @@ vim.opt.foldlevel = 99
 vim.opt.shell = "/bin/bash"
 
 -- Specific python environment
-vim.g.python3_host_prog = "~/.pyenv/versions/3.13.5/bin/python3"
+vim.g.python3_host_prog = "~/.pyenv/versions/3.13.7/bin/python3"
 
 vim.schedule(function()
   vim.opt.clipboard = "unnamedplus"

@@ -19,7 +19,6 @@ return {
       enabled = true,
     },
     words = {},
-    -- image = {},
     explorer = {
       replace_netrw = true,
     },

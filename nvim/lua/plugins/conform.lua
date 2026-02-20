@@ -3,7 +3,7 @@ return {
   event = "VeryLazy",
   format_on_save = {
     -- These options will be passed to conform.format()
-    timeout_ms = 500,
+    timeout_ms = 2000,
     lsp_format = "fallback",
   },
   config = function()
@@ -12,10 +12,10 @@ return {
         lua = { "stylua" },
         python = { "black" },
         tex = { "tex-fmt" },
-        markdown = { "prettierd" },
-        json = { "prettierd" },
-        yaml = { "prettierd" },
-        yml = { "prettierd" },
+        markdown = { "prettier" },
+        json = { "prettier" },
+        yaml = { "prettier" },
+        yml = { "prettier" },
         rust = { "rustfmt" },
         typst = { "typstyle" },
       },
@@ -26,7 +26,7 @@ return {
           args = { "-n", "--stdin" },
         },
         black = {
-          prepend_args = { "--skip-magic-trailing-comma" }, -- "--line-length", "100",
+          prepend_args = { "--fast" },
         },
       },
     })

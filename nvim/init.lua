@@ -6,7 +6,9 @@ require("config.options")
 require("config.keymaps")
 
 -- vim.cmd("colorscheme neopywal")
-vim.cmd("colorscheme rose-pine-main")
+vim.cmd("colorscheme kanso-ink")
+-- vim.cmd("colorscheme kanso-zen")
+-- vim.cmd("colorscheme rose-pine-main")
 
 -- vim.cmd([[
 --   hi Normal guibg=NONE ctermbg=NONE

@@ -12,8 +12,6 @@ return {
     },
   },
   config = function()
-    -- Diagnostic Config
-    -- See :help vim.diagnostic.Opts
     vim.diagnostic.config({
       severity_sort = true,
       float = { border = "rounded", source = "if_many" },
@@ -48,15 +46,7 @@ return {
     vim.lsp.config("html", { capabilities = cap, filetypes = { "html", "markdown" } })
     vim.lsp.config("emmet_ls", { capabilities = cap, filetypes = { "html", "markdown" } })
 
-    local capabilities = require("blink.cmp").get_lsp_capabilities()
-
-    vim.lsp.config("lua_ls", { capabilities = capabilities })
-    vim.lsp.config("marksman", { capabilities = capabilities })
-    vim.lsp.config("texlab", { capabilities = capabilities })
-    vim.lsp.config("bashls", { capabilities = capabilities })
-    vim.lsp.config("ruff", { capabilities = capabilities })
     vim.lsp.config("pyright", {
-      capabilities = capabilities,
       cmd = { "/home/hiti/.pyenv/shims/pyright-langserver", "--stdio" },
       settings = {
         python = {
@@ -69,9 +59,8 @@ return {
       },
     })
     vim.lsp.config("tinymist", {
-      capabilities = capabilities,
       settings = {
-        exportPdf = "onType",
+        -- exportPdf = "onType",
         formatterMode = "typstyle",
         lint = true,
       },
@@ -94,7 +83,6 @@ return {
       end,
     })
     vim.lsp.config("rust_analyzer", {
-      capabilities = capabilities,
       settings = {
         ["rust-analyzer"] = {
           diagnostics = {
@@ -110,59 +98,44 @@ return {
       settings = {
         ["harper-ls"] = {
           userDictPath = "/home/hiti/Hiti/dict.txt",
-          fileDictPath = "",
           linters = {
             SpellCheck = true,
-            SpelledNumbers = false,
-            AnA = true,
-            SentenceCapitalization = true,
-            UnclosedQuotes = true,
-            WrongQuotes = false,
-            LongSentences = true,
-            RepeatedWords = true,
-            Spaces = true,
-            Matcher = true,
-            CorrectNumberSuffix = true,
           },
           codeActions = {
             ForceStable = true,
           },
-          markdown = {
-            IgnoreLinkTitle = false,
-          },
-          diagnosticSeverity = "hint",
-          isolateEnglish = false,
         },
       },
     })
-    vim.lsp.config("arduino_language_server", {
-      filetypes = { "ino", "arduino" },
-      cmd = {
-        "arduino-language-server",
-        "-cli",
-        "/usr/bin/arduino-cli",
-        "-cli-config",
-        vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
-        "-clangd",
-        "/usr/bin/clangd",
-        "-fqbn",
-        "arduino:renesas_uno:unor4wifi",
-      },
+    -- vim.lsp.config("arduino_language_server", {
+    --   filetypes = { "ino", "arduino" },
+    --   cmd = {
+    --     "arduino-language-server",
+    --     "-cli",
+    --     "/usr/bin/arduino-cli",
+    --     "-cli-config",
+    --     vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
+    --     "-clangd",
+    --     "/usr/bin/clangd",
+    --     "-fqbn",
+    --     "arduino:renesas_uno:unor4wifi",
+    --   },
+    -- })
+    vim.lsp.enable({
+      "pyrefly",
+      "lua_ls",
+      "marksman",
+      "texlab",
+      "bashls",
+      "ruff",
+      "tinymist",
+      "rust_analyzer",
+      "html",
+      -- "tailwindcss",
+      "emmet_ls",
+      "harper_ls",
+      -- "arduino_language_server",
+      "clangd",
     })
-    vim.lsp.enable("pyrefly")
-    vim.lsp.enable("lua_ls")
-    vim.lsp.enable("marksman")
-    vim.lsp.enable("texlab")
-    vim.lsp.enable("bashls")
-    vim.lsp.enable("ruff")
-    vim.lsp.enable("tinymist")
-    -- vim.lsp.enable("pyright")
-    vim.lsp.enable("rust_analyzer")
-    vim.lsp.enable("html")
-    vim.lsp.enable("tailwindcss")
-    vim.lsp.enable("emmet_ls")
-    vim.lsp.enable("harper_ls")
-    vim.lsp.enable("arduino_language_server")
-    vim.lsp.enable("clangd")
   end,
 }

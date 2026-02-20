@@ -4,32 +4,31 @@ theme="$HOME/Hiti/dotfiles/scripts/rofi_scripts/rounded-template.rasi"
 OUTDIR="$HOME/Pictures/screenshots"
 mkdir -p "$OUTDIR"
 
-choice=$(printf "Full screen\nActive window\nSelect area\nCopy area" | rofi -dmenu -p "Screenshot" -theme ${theme})
+choice=$(printf "Full screen\nActive window\nSelect area\nCopy area" | \
+    rofi -dmenu -p "Screenshot" -theme "${theme}")
 
-if [ -z "$choice" ]; then
-    exit 1
-fi
-
-FILENAME="$OUTDIR/$(date +%F_%H-%M-%S).png"
-notify() {
-    notify-send -t 5000 "Screenshot" "$1"
-}
+[ -z "$choice" ] && exit 1
 
 case "$choice" in
     "Full screen")
-        grim - | tee "$FILENAME" | wl-copy
-        notify "Fullscreen saved to <b>$FILENAME</b> and copied."
+        hyprshot -m output -o "$OUTDIR"
         ;;
+
     "Active window")
-        slurp -d -w | grim -g - | tee "$FILENAME" | wl-copy
-        notify "Active window saved to <b>$FILENAME</b> and copied."
+        hyprshot -m window -o "$OUTDIR"
         ;;
+
     "Select area")
-        slurp -d | grim -g - | tee "$FILENAME" | wl-copy
-        notify "Area saved to <b>$FILENAME</b> and copied."
+        hyprshot -m region -o "$OUTDIR"
         ;;
+
     "Copy area")
-        slurp | grim -g - - | magick -trim - | wl-copy
-        notify "Area copied to clipboard."
+        hyprshot -m region --clipboard-only
         ;;
 esac
+
+sleep 0.3
+hyprctl dispatch focuscurrentorlast >/dev/null 2>&1
+
+
+# magick $FILENAME -shave 1x1 $FILENAMR

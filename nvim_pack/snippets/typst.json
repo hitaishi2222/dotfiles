@@ -1,0 +1,37 @@
+{
+  "a4_roman": {
+    "prefix": "a4_roman",
+    "body": "#set page(paper: \"a4\")\n#set text(font: \"Times New Roman\", size: 13pt)\n#set par(justify: true)",
+    "desc": "A4-Roaman-Justify"
+  },
+  "cetz-plot": {
+    "prefix": "ce",
+    "body": "#figure(cetz.canvas({\n\timport cetz.draw: *\n\timport cetz-plot: *\n\n\t$1\n\n\t})\n)",
+    "desc": "cetz-plot"
+  },
+  "derivative": {
+    "prefix": "dd",
+    "body": "(d $1)/(d $2)",
+    "desc": "single derivative"
+  },
+  "d-derivative": {
+    "prefix": "dd2",
+    "body": "(d^2 $1)/(d $2^2)",
+    "desc": "double derivative"
+  },
+  "par-derivative": {
+    "prefix": "pdd",
+    "body": "(partial $1)/(partial $2)",
+    "desc": "partial single derivative"
+  },
+  "par-d-derivative": {
+    "prefix": "pdd2",
+    "body": "(partial^2 $1)/(partial $2^2)",
+    "desc": "partial double derivative"
+  },
+  "subscript": {
+    "prefix": "__",
+    "body": "#sub[$1]",
+    "desc": "normal subscript"
+  }
+}

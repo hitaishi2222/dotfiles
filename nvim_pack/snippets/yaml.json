@@ -1,0 +1,7 @@
+{
+  "add-glossary-item": {
+    "prefix": "gl",
+    "body": "$1:\n  short: $2\n  long: $3\n  plural: $4",
+    "desc": "add glossary item in yaml"
+  }
+}

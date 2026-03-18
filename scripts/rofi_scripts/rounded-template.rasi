@@ -2,14 +2,14 @@
 /* Author: Newman Sanchez (https://github.com/newmanls) */
 
 * {
-    bg0: #A9786F;
-    bg1: #BF8D6D;
-    bg2: #8C787F;
-    bg3: #BF6B5C;
-    fg0: #3F3F41;
-    fg1: #F6EFBC;
-    fg2: #F6EFBC;
-    fg3: #46484C;
+    bg0: #6C896A;
+    bg1: #878A46;
+    bg2: #9A8259;
+    bg3: #679565;
+    fg0: #474848;
+    fg1: #F1DFCD;
+    fg2: #F1DFCD;
+    fg3: #4B4E4E;
 
     font: "JetBrainsMono NL 13";
 
@@ -57,7 +57,7 @@ entry {
 message {
     margin:             12px 0 0;
     border-radius:      16px;
-    border-color:       @bg2;
+    border-color:       @bg3;
     background-color:   @bg2;
 }
 
@@ -76,6 +76,7 @@ listview {
 }
 
 element {
+    margin:         2px 1px;
     padding:        8px 16px;
     spacing:        8px;
     border-radius:  16px;

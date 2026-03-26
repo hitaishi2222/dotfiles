@@ -6,7 +6,7 @@ Window Manager -> Hyprland
 Browser -> Zen
 Terminal -> Ghostty
 Terminal Multiplexer -> Tmux
-Shell -> Nushell with starship prompt
+Shell -> Fish with starship
 Keyboard Keys Manager -> Kanata
 Font -> JetBrains Mono Nerd Font
 Editor -> Neovim
@@ -22,11 +22,11 @@ Wallpaper Manager -> Hyprpaper
 Color picker Manager -> hyprpicker
 Color-Theme Config -> Wallust (rust)
 Wallpaper-Picker -> script with fzf
-Pdf reader -> Okular
+Pdf reader -> Okular & Sioyek
 Notes & plans -> Obsidian
 Image Viewer -> Ristretto
 Termianl file-manager -> Yazi
-File manager -> dolphin
+File manager -> nautilus
 GTK-Theme -> Orchis
 Linux-Mobile Link -> PC Link (FOSS)
 

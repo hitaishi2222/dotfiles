@@ -1,62 +1,53 @@
 #!/usr/bin/env bash
 
-set -a
-HSA_OVERRIDE_GFX_VERSION=11.5.1
-GPU_MAX_HEAP_SIZE=100
-GPU_MAX_ALLOC_PERCENT=100
-GPU_MAX_SINGLE_ALLOC_PERCENT=100
-HSA_ENABLE_SDMA=0
-ROCBLAS_USE_HIPBLASLT=1
-GGML_CUDA_ENABLE_UNIFIED_MEMORY=1
-set +a
+set -aeu
+export HSA_OVERRIDE_GFX_VERSION=11.5.1
+export GPU_MAX_HEAP_SIZE=100
+export GPU_MAX_ALLOC_PERCENT=100
+export GPU_MAX_SINGLE_ALLOC_PERCENT=100
+export HSA_ENABLE_SDMA=0
+export ROCBLAS_USE_HIPBLASLT=1
+export GGML_CUDA_ENABLE_UNIFIED_MEMORY=1
 
-echo GPU_MAX_SINGLE_ALLOC_PERCENT = "$GPU_MAX_SINGLE_ALLOC_PERCENT"
+export APIKEY="HitiAIMaxx"
 
-my_fzf="fzf --height 40% --layout reverse --border" 
-list_options=$(echo "Qwen2.5-Coder-7B-Instruct-Q8 Qwen2.5-Coder-14B-Instruct-Q5 DeepSeek-R1-Distill-7B" | tr " " "\n")
+my_fzf="fzf --height 40% --layout reverse --border"
 
-option=$(printf "$list_options" | $my_fzf)
-echo $option
+models=("Qwen2.5-Coder-14B-Instruct-Q5" "DeepSeek-R1-Distill-7B" "Qwen3.5-9B-GGUF_Qwen3.5-9B-UD-Q4")
+option=$(printf '%s\n' "${models[@]}" | $my_fzf)
+[[ -z "$option" ]] && { echo "No model selected"; exit 1; }
+echo "Selected: $option"
 
-get_work=$(echo "server ai" | tr " " "\n")
+work=$(printf '%s\n' "server" "ai" | $my_fzf)
+[[ -z "$work" ]] && { echo "No mode selected"; exit 1; }
+echo "Mode: $work"
 
-work=$(printf "$get_work" | $my_fzf)
-echo $work
+handle_model() {
+    local model="$1"
+    shift
+    local extra_args=()
 
-APIKEY="HitiAIMaxx"
+    case "$model" in
+        "Qwen2.5-Coder-14B-Instruct-Q5")
+            export GGML_JINJA_FILE=~/Research/local_llms/qwen2.5-coder-14b.jinja
+            extra_args=(-m ~/Research/local_llms/qwen2.5-coder-14b-instruct-q5_k_m.gguf -t 16 -tb 24 -c 65538 -b 4096 -ub 2024 --cache-type-k q4_0 --cache-type-v q4_0 -np 1 -mg 0 --no-warmup)
+            ;;
+        "DeepSeek-R1-Distill-7B")
+            extra_args=(-m ~/Research/local_llms/deepseek_r1_distill_7b_q8.gguf)
+            ;;
+        "Qwen3.5-9B-GGUF_Qwen3.5-9B-UD-Q4")
+            extra_args=(-m ~/Research/local_llms/unsloth_Qwen3.5-9B-GGUF_Qwen3.5-9B-UD-Q4_K_XL.gguf -c 65536 --top-k 20 --min-p 0.00 --reasoning on)
+            ;;
+    esac
 
-if [[ $option == "Qwen2.5-Coder-7B-Instruct-Q8" ]]; then
-    llm=~/Research/local_llms/qwen2.5-coder-7b-instruct-q8_0.gguf
-    if [[ $work == "server" ]]; then
-        llama-server -m $llm --host 127.0.0.1 --port 2000 -ngl 99 -fa 1 -t 8 -c 16384 --jinja --api-key $APIKEY
-    elif [[ $work == "ai" ]]; then
-        llama-cli -m $llm -ngl 99 -fa 1 -t 8 -c 4096
+    if [[ "$work" == "server" ]]; then
+        llama-server "${extra_args[@]}" --host 127.0.0.1 --port 2000 -ngl 99 -fa 1 -t 8 --jinja --api-key "$APIKEY"
+    elif [[ "$work" == "ai" ]]; then
+        llama-cli "${extra_args[@]}" -ngl 99 -fa 1 -t 8
     else
         echo "Nothing selected"
+        return 1
     fi
-fi
+}
 
-if [[ $option == "Qwen2.5-Coder-14B-Instruct-Q5" ]]; then
-    llm=~/Research/local_llms/qwen2.5-coder-14b-instruct-q5_k_m.gguf
-    jinja_template_file=~/Research/local_llms/qwen2.5-coder-14b.jinja
-    if [[ $work == "server" ]]; then
-        llama-server -m $llm --host 127.0.0.1 --port 2000 -ngl 99 -fa 1 -t 16  -tb 24  -c 32768 -b 1024 -ub 512 --cache-type-k q4_0 --cache-type-v q4_0 -np 1 --jinja --api-key $APIKEY  --chat-template-file $jinja_template_file -mg 0 --no-warmup
-        # llama-server -m $llm --host 127.0.0.1 --port 2000 -ngl 99 -fa 1 -t 8 -c 16384 -b 4096 --parallel 4 --jinja --api-key $APIKEY --chat-template-file $jinja_template_file
-    elif [[ $work == "ai" ]]; then
-        llama-cli -m $llm -ngl 99 -fa 1 -t 8 -c 8192 -b 1024 -ub 1024 --jinja --chat-template-file $jinja_template_file
-    else
-        echo "Nothing selected"
-    fi
-fi
-
-if [[ $option == "DeepSeek-R1-Distill-7B" ]]; then
-    llm=~/Research/local_llms/deepseek_r1_distill_7b_q8.gguf
-    if [[ $work == "server" ]]; then
-        llama-server -m $llm --host 127.0.0.1 --port 2000 -ngl 99 -fa 1 -t 8 -c 16384 --jinja --api-key $APIKEY
-    elif [[ $work == "ai" ]]; then
-        llama-cli -m $llm -ngl 99 -fa 1 -t 8 -c 4096
-    else
-        echo "Nothing selected"
-    fi
-fi
-
+handle_model "$option" "$@"

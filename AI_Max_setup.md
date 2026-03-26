@@ -52,7 +52,7 @@ Paru install: (You can instlal Yay also). I like paru better bcz its written in 
 ```sh
 sudo pacman -S --needed base-devel rustup
 rustup default stable
-cargo install cargo-binstall du-dust
+cargo install cargo-binstall du-dust pastel
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
@@ -117,7 +117,7 @@ sudo pacman -S pyenv
 pyenv install 3.13.12
 pyenv global 3.13.12
 pip install uv setuptools
-uv pip install --system numpy scipy pandas matplotlib marimo femwell gdsfactory[full] ruff ty pyrefly black colorthief flask kiteconnect python-dotenv pydantic pytz python-lsp-server
+uv pip install --system numpy scipy pandas matplotlib marimo femwell gdsfactory[full] ruff ty pyrefly black colorthief flask kiteconnect python-dotenv pydantic pytz python-lsp-server ruff-lsp
 ```
 
 Typst & Rust:
@@ -143,7 +143,7 @@ Asusctl
 `supergfxctl` and `auto-cpufreq` are breaking in installation,
 
 ```sh
-sudo pacman -S mesa vulkan-radeon libva-mesa-driver fwupd mesa-utils vulkan-tools hipblas
+sudo pacman -S mesa vulkan-radeon libva-mesa-driver fwupd mesa-utils vulkan-tools hipblas vulkan-extra-tools
 paru -S asusctl
 systemctl start asusd
 ```
@@ -184,14 +184,15 @@ Note: final GRUB_CMDLINE looks like this:
 # Wallpaper and Display setup
 
 ```sh
-sudo pacman -S chafa bc wtype
+sudo pacman -S chafa bc wtype xdg-desktop-portal-wlr xdg-desktop-portal-gtk openslide
 caro install wallust
 ```
 
 # Fonts
 
 ```sh
-sudo pacman -S ttf-dejavu ttf-liberation noto-fonts ttf-hack adobe-source-code-pro-fonts ttf-font-awesome papirus-icon-theme breeze-icons gnome-tweaks xorg-fonts-misc terminus-font
+sudo pacman -S ttf-dejavu ttf-liberation noto-fonts ttf-hack adobe-source-code-pro-fonts ttf-font-awesome papirus-icon-theme breeze-icons gnome-tweaks xorg-fonts-misc terminus-font noto-fonts-cjk noto-fonts-emoji
+paru -S ttf-ms-fonts
 sudo nvim /etc/vconsole.conf
 ```
 
@@ -200,11 +201,13 @@ change the font to `FONT=ter-v24b`
 # Other
 
 ```sh
-sudo pacman -S rmpc ffmpeg ueberzugpp cava imagemagick jdk-openjdk hdf5 fastfetch okular vlc mov ristretto yazi tldr mandoc less ripgrep bat python-adblock qutebrowser nwg-look qtwebengine 7zip speech-dispatcher obs-studio
+sudo pacman -S rmpc ffmpeg ueberzugpp cava imagemagick jdk-openjdk hdf5 fastfetch okular vlc mov ristretto yazi tldr mandoc less ripgrep bat python-adblock qutebrowser nwg-look qtwebengine 7zip speech-dispatcher obs-studio obsidian speedtest-cli clipcat mpd mpc timidity++ freecad
 paru -S zen-browser-bin zotero-bin
 uv pip install --system yt-dlp mutagen openslide-bin
 sudo makewhatis /usr/share/man
 ```
+
+caffine-arch -> [Caffine](caffine -> https://github.com/thatbeautifuldream/caffeine-arch)
 
 ```sh
 systemctl stop systemd-resolved
@@ -248,6 +251,10 @@ ollama pull deepseek-r1:14b
 Ollama couldn't able to run these models due to memory allocation with my laptop. It doesn't have the capability to address memory allocation for shared memory.
 
 ### LLAMA.cpp
+
+There was a debate on using llama.cpp with Vulkan or with ROCM.
+Had Horrible expperience with ROCM, even 4B parameter models taking all my memory and crashing laptop completly.
+So, For this laptop or for me personally. Vulkan worked for even bigger models of 16B parameter smoothly.
 
 So trying `llama.cpp`
 
@@ -295,23 +302,83 @@ sudo ln -s /home/hiti/Downloads/Installers/whisper.cpp/build/bin/whisper-cli /us
 ## Gaming on linux
 
 ```sh
-sudo pacman -S steam gamescope
+sudo pacman -S steam gamescope gamemode lib32-gamemode
 ```
 
 Next follow steps from [Arch-Wiki steam](https://wiki.archlinux.org/title/Steam)
 
 As of now whisper is working but my audio system is not.
 
+# Docker
+
+Containers Created:
+
+1. Bento Pdf
+2. Arcane
+
+Containers need:
+
+1. VPN
+
+### MEEP
+
+```sh
+pip install meep
+sudo pacman -S fftw-openmpi hdf5-openmpi gcc-fortan openblas
+paru -S libctl
+
+#MPB
+git clone https://github.com/NanoComp/mpb.git
+./configure --enable-shared
+
+#MEEP
+sudo pacman -S swig
+alias egrep="/usr/bin/grep -E"
+
+git clone https://github.com/NanoComp/harminv.git
+paru -S libgdsii-git
+cd harminv
+./configure --with-cxx --enable-shared
+
+https://github.com/NanoComp/meep.git
+cd meep
+./autogen.sh --with-mpi --enable-shared
+sudo make
+sudo make install
+cp -r python/meep ~/.pyenv/versions/3.13.12/versions/3.13.12/lib/python3.13/site-packages/
+uv pip install --system mpi4py
+```
+
+### COMSOL MULTIPHYSICS
+
+```sh
+7z x comsol.tar.gz
+cd comsol
+sudo umount -o loop comsol.iso /mnt
+cd /mnt
+./setup.sh
+```
+
+Still It doesn't look good on Archlinux with fractional scaling. So add this to your `hyprland.conf`
+
+```
+xwayland {
+  force_zero_scaling = true
+}
+```
+
 Pending Setups:
 
-- Docker
-- RMPC
-- Data
-- Obsidian
-- Comsol
-- MEEP/MPB
+- Configure Snapshots
 - PYNLO/laserfun
 - Language Tool (optional)
 - Hyprlock rice
-- Clipboard
-- Screenshots
+- Check Other required/missing softwares on [[sotwares_list.md]]
+
+sqlit-tui & termdbms -> sqlite query and lookup
+
+# NIRI Setup
+
+```sh
+sudo pacman -Syu niri xwayland-satellite cliphist wlsunset power-profiles-daemon
+```

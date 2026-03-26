@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+PIDFILE="/tmp/caffeine.pid"
+
+function start() {
+  if [ -f "$PIDFILE" ] && kill -0 "$(cat $PIDFILE)" 2>/dev/null; then
+    echo "Caffeine is already running."
+    exit 1
+  fi
+  echo "Starting caffeine to keep system awake..."
+  # Run systemd-inhibit with nohup to keep it alive
+  nohup systemd-inhibit --what=idle:sleep:shutdown --mode=block sleep infinity > /dev/null 2>&1 &
+  echo $! > "$PIDFILE"
+  disown
+  echo "Caffeine started with PID $(cat $PIDFILE)."
+}
+
+function stop() {
+  if [ ! -f "$PIDFILE" ] || ! kill -0 "$(cat $PIDFILE)" 2>/dev/null; then
+    echo "Caffeine is not running."
+    exit 1
+  fi
+  echo "Stopping caffeine..."
+  kill "$(cat $PIDFILE)"
+  rm -f "$PIDFILE"
+  echo "Caffeine stopped."
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  status)
+    if [ -f "$PIDFILE" ] && kill -0 "$(cat $PIDFILE)" 2>/dev/null; then
+      echo "Caffeine is running with PID $(cat $PIDFILE)."
+    else
+      echo "Caffeine is not running."
+    fi
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|status}"
+    exit 1
+    ;;
+esac

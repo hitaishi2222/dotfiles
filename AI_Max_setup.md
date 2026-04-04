@@ -40,6 +40,8 @@ Installing some dependencies for my shells and fish to work properly according t
 sudo pacman -S eza zoxide acpi rsync reflector
 ```
 
+for tree use `eza -T --icons`
+
 Populating XDG-User Dirs: Documents, Downloads, ... etc
 
 ```sh
@@ -50,9 +52,9 @@ xdg-user-dirs-update
 Paru install: (You can instlal Yay also). I like paru better bcz its written in Rust :)
 
 ```sh
-sudo pacman -S --needed base-devel rustup
+sudo pacman -S --needed base-devel rustup cava
 rustup default stable
-cargo install cargo-binstall du-dust pastel
+cargo install cargo-binstall du-dust pastel bluetui aim numbat-cli
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
@@ -201,10 +203,17 @@ change the font to `FONT=ter-v24b`
 # Other
 
 ```sh
-sudo pacman -S rmpc ffmpeg ueberzugpp cava imagemagick jdk-openjdk hdf5 fastfetch okular vlc mov ristretto yazi tldr mandoc less ripgrep bat python-adblock qutebrowser nwg-look qtwebengine 7zip speech-dispatcher obs-studio obsidian speedtest-cli clipcat mpd mpc timidity++ freecad
+sudo pacman -S rmpc ffmpeg ueberzugpp cava imagemagick jdk-openjdk hdf5 fastfetch okular vlc mov ristretto yazi tldr mandoc less ripgrep bat python-adblock qutebrowser nwg-look qtwebengine 7zip speech-dispatcher obs-studio obsidian speedtest-cli clipcat mpd mpc timidity++ freecad cpufetch
 paru -S zen-browser-bin zotero-bin
 uv pip install --system yt-dlp mutagen openslide-bin
 sudo makewhatis /usr/share/man
+```
+
+Qute browser is not supporting newer versions of pdf.js so we need to install and downgrade it to V(5.0).
+
+```sh
+sudo pacman -S pdfjs
+paru -S downgrade
 ```
 
 caffine-arch -> [Caffine](caffine -> https://github.com/thatbeautifuldream/caffeine-arch)
@@ -256,9 +265,12 @@ There was a debate on using llama.cpp with Vulkan or with ROCM.
 Had Horrible expperience with ROCM, even 4B parameter models taking all my memory and crashing laptop completly.
 So, For this laptop or for me personally. Vulkan worked for even bigger models of 16B parameter smoothly.
 
-So trying `llama.cpp`
+So trying `llama.cpp` [Vulkan Build](https://github.com/ggml-org/llama.cpp/blob/master/docs/build.md#vulkan)
 
-Use this to compile `llama.cpp` [Official Way](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/3rd-party/llama-cpp-install.html)
+```
+cmake -B build -DGGML_VULKAN=ON
+cmake --build build --config Release
+```
 
 ## Configuring sound
 
@@ -365,6 +377,14 @@ Still It doesn't look good on Archlinux with fractional scaling. So add this to 
 xwayland {
   force_zero_scaling = true
 }
+```
+
+### OCR Setup with screen capture
+
+```
+sudo pacman -S tesseract tesseract-data-eng
+
+grim -g "$(slurp)" - | tesseract stdin stdout | wl-copy
 ```
 
 Pending Setups:

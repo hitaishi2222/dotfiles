@@ -1,0 +1,7 @@
+#!/usr/bin/env fish
+
+set my_fzf $(fzf --height 40% --layout reverse --border)
+
+set files $(fd -p /home/hiti/Research/Pdfs/ -e pdf )
+
+echo $files $my_fzf

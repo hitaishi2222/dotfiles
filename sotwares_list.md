@@ -29,6 +29,9 @@ Termianl file-manager -> Yazi
 File manager -> nautilus
 GTK-Theme -> Orchis
 Linux-Mobile Link -> PC Link (FOSS)
+terminal downloader -> Aim (rust)
+bluetoooth manager -> Bluetui
+Calculator -> numbat
 
 -> Install tinymist through:
 cargo install --git https://github.com/Myriad-Dreamin/tinymist --locked tinymist-cli

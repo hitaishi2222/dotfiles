@@ -6,19 +6,21 @@ theme = wallust
 font-size = 13
 link-url = true
 initial-command = tmux
-background-opacity = 0.8
-shell-integration = zsh
+background-opacity = 0.6
+shell-integration = fish
 window-decoration = false
 focus-follows-mouse = true
 cursor-invert-fg-bg = true
 confirm-close-surface = false
 mouse-hide-while-typing = true
-font-family = JetBrainsMono Nerd Font
+font-family = JetBrainsMono Nerd Font Propo
 auto-update = check
 app-notifications = false
 window-padding-x = 10,10
 window-padding-balance = true
-
+font-style-italic = true
+notify-on-command-finish = unfocused
+notify-on-command-finish-action = notify
 
 keybind = global:ctrl+0=toggle_quick_terminal
 

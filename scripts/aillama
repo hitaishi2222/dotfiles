@@ -20,9 +20,7 @@ readonly FZF_CMD="fzf --height 40% --layout reverse --border"
 # Format: "Display Name|Path|Arguments"
 # Note: Arguments are stored as a single string to be parsed into an array
 models=(
-    "Qwen2.5-Coder-7B|$MODEL_DIR/Qwen2.5-Coder-7B-Instruct-Q6_K_L.gguf|-ub 1024 -b 1024 --ctx-size 0 --cache-reuse 256"
-    "Qwen3.5-9B|$MODEL_DIR/unsloth_Qwen3.5-9B-GGUF_Qwen3.5-9B-UD-Q4_K_XL.gguf|-c 65536 --top-k 20 --min-p 0.00 --reasoning on"
-    "Gemma4-26B|$MODEL_DIR/gemma-4-26B-A4B-it-UD-Q4_K_XL.gguf|-c 32768 --top-k 64 --temp 1.0 --top-p 0.95"
+    "Qwen3.5-9B-Q6|$MODEL_DIR/Qwen3.5-9B-UD-Q6_K_XL.gguf|-c 131072 --top-k 20 --min-p 0.00 --reasoning on --port 2000 --cache-type-k q8_0 --cache-type-v q8_0 --defrag-thold 0.1 --chat-template-kwargs '{"enable_thinking":true}' "
 )
 
 # --- Helper Functions ---
@@ -74,14 +72,13 @@ handle_model() {
     local extra_args=()
     eval "extra_args=($args_str)"
 
-    local common_args=(-m "$path" -ngl 99 -fa 1 -t 8)
+    local common_args=(-m "$path" -ngl 99 -t 20)
 
     log_info "Launching $name in $work_mode mode..."
 
     if [[ "$work_mode" == "server" ]]; then
         llama-server "${common_args[@]}" "${extra_args[@]}" \
-            --host 0.0.0.0 --port 2000 --jinja
-            # --host 0.0.0.0 --port 2000 --jinja --api-key "$APIKEY"
+            --host 0.0.0.0 --jinja
     else
         llama-cli "${common_args[@]}" "${extra_args[@]}"
     fi

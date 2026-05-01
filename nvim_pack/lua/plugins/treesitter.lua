@@ -1,8 +1,8 @@
 vim.pack.add({
   {
     src = "https://github.com/nvim-treesitter/nvim-treesitter",
-    version = "master"
-  }
+    version = "master",
+  },
 })
 
 require("nvim-treesitter").setup({
@@ -15,7 +15,7 @@ require("nvim-treesitter").setup({
     "bash",
     "markdown",
     "rust",
-    "typst"
+    "typst",
   },
   sync_install = true,
   auto_install = false,

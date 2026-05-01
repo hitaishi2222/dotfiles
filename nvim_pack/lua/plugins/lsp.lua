@@ -38,13 +38,18 @@ vim.lsp.config("harper_ls", {
         ForceStable = true,
       },
     },
+    -- harper_ls on_init override
+    on_init = function(client)
+      client.offset_encoding = "utf-16"
+    end,
   },
 })
 
 vim.lsp.enable({
 
   --python
-  "pyright",
+  -- "pyright",
+  "basedpyright",
   "ruff",
 
   -- lua
@@ -64,4 +69,7 @@ vim.lsp.enable({
 
   -- markdown (check better-one)
   "marksman",
+
+  -- Latex
+  "texlab",
 })

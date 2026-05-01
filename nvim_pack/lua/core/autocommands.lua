@@ -1,3 +1,5 @@
+require("vim._core.ui2").enable({})
+
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.tex",
   callback = function()
@@ -5,10 +7,12 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function() vim.hl.on_yank() end,
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+  callback = function()
+    vim.hl.on_yank()
+  end,
 })
 
 vim.api.nvim_create_user_command("PackUpdate", function()
@@ -21,7 +25,6 @@ vim.api.nvim_create_autocmd("User", {
     vim.cmd("TSUpdate")
   end,
 })
-
 
 vim.diagnostic.config({
   severity_sort = true,
@@ -49,4 +52,3 @@ vim.diagnostic.config({
     end,
   },
 })
-

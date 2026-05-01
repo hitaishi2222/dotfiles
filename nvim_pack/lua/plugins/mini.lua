@@ -4,18 +4,21 @@ vim.pack.add({
 
 require("mini.deps").setup({})
 require("mini.ai").setup({})
+require("mini.icons").setup({})
 require("mini.comment").setup({})
 require("mini.snippets").setup({})
 require("mini.cmdline").setup({})
+require("mini.starter").setup({})
 require("mini.surround").setup({})
 require("mini.bracketed").setup({})
-require("mini.icons").setup({})
 require("mini.git").setup({})
+require("mini.pick").setup({})
 require("mini.sessions").setup({})
 require("mini.tabline").setup({})
 require("mini.indentscope").setup({})
 require("mini.cursorword").setup({})
 require("mini.fuzzy").setup({})
+require("mini.notify").setup({})
 require("mini.basics").setup({ mappings = { windows = true } })
 require("mini.pairs").setup({
   mappings = {

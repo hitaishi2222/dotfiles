@@ -19,16 +19,18 @@ opt.autoindent = true
 opt.expandtab = true
 opt.splitright = true
 opt.splitbelow = true
+opt.wrap = true
 opt.list = true
 opt.listchars = { tab = "» ", trail = "·" }
 opt.winborder = "rounded"
+opt.swapfile = false
+opt.autoread = true
+opt.fillchars = { eob = " " }
+opt.clipboard:append("unnamedplus")
+opt.encoding = "utf-8"
 
 -- Globals
 glo.have_nerd_font = true
-glo.python3_host_prog = "~/.pyenv/versions/3.13.7/bin/python3"
+glo.python3_host_prog = "~/.pyenv/versions/3.13.12/bin/python3"
 glo.autoformat = true
 glo.deprecation_warnings = true
-
-vim.schedule(function()
-  vim.o.clipboard = "unnamedplus"
-end)

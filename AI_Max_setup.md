@@ -203,7 +203,7 @@ change the font to `FONT=ter-v24b`
 # Other
 
 ```sh
-sudo pacman -S rmpc ffmpeg ueberzugpp cava imagemagick jdk-openjdk hdf5 fastfetch okular vlc mov ristretto yazi tldr mandoc less ripgrep bat python-adblock qutebrowser nwg-look qtwebengine 7zip speech-dispatcher obs-studio obsidian speedtest-cli clipcat mpd mpc timidity++ freecad cpufetch
+sudo pacman -S rmpc ffmpeg ueberzugpp cava imagemagick jdk-openjdk hdf5 fastfetch okular vlc mov ristretto yazi tldr mandoc less ripgrep bat python-adblock qutebrowser nwg-look qtwebengine 7zip speech-dispatcher obs-studio obsidian speedtest-cli clipcat mpd mpc timidity++ freecad cpufetch libreoffice-fresh
 paru -S zen-browser-bin zotero-bin
 uv pip install --system yt-dlp mutagen openslide-bin
 sudo makewhatis /usr/share/man
@@ -243,7 +243,7 @@ sudo pacman -S hyprpicker hypridle xdg-desktop-portal-hyprland hyprpolkitagent h
 ## Development Setup: Some AI and Docker Stuff
 
 ```sh
-sudo pacman -S github-cli
+sudo pacman -S github-cli vulkan-devel
 paru -S opencode btop nvtop vulkan-tools llvm vulkan-headers shaderc
 ```
 
@@ -401,4 +401,10 @@ sqlit-tui & termdbms -> sqlite query and lookup
 
 ```sh
 sudo pacman -Syu niri xwayland-satellite cliphist wlsunset power-profiles-daemon
+```
+
+## Kannada language input setup on Archlinux
+
+```sh
+sudo pacman -S fcitx5 fcitx5-m17n fcitx5-configtool fcitx5-gtk fcitx5-qt
 ```

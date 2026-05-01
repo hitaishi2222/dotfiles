@@ -13,7 +13,7 @@ require("snacks").setup({
   lazygit = {},
   input = {},
   bigfile = {},
-  notifier = { enabled = true },
+  -- notifier = { enabled = true },
   words = {},
   explorer = { replace_netrw = true },
 })

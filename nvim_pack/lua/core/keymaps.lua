@@ -25,6 +25,10 @@ map("v", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- Quit nvim
 map("n", "<leader>W", "<cmd>qa<cr>", { desc = "Quit All" })
+map("n", "<leader>S", "<cmd>w<cr>", { desc = "Save file" })
+
+-- Vertical Split
+map("n", "<leader>V", "<cmd>vsplit<cr>", { desc = "Save file" })
 
 map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "LSP Rename" })
 map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code-Action" })
@@ -47,3 +51,23 @@ map("n", "<leader>p", function()
   vim.cmd("w")
   vim.cmd("!python %")
 end, { desc = "Run python script" })
+
+-- relaton isbn import
+vim.keymap.set("n", "<leader>I", function()
+  -- Prompt for ISBN
+  local isbn = vim.fn.input("Enter ISBN: ")
+  if isbn == "" then
+    print("No ISBN entered.")
+    return
+  end
+
+  -- Run relaton command and capture stdout
+  local output = vim.fn.system("relaton fetch isbn:" .. isbn .. " -f yaml")
+  local lines = vim.split(output, "\n")
+
+  -- Insert lines at current cursor row
+  local row = vim.api.nvim_win_get_cursor(0)[1] -- get current line (1-indexed)
+  vim.api.nvim_buf_set_lines(0, row, row, false, lines)
+
+  print("Inserted Relaton metadata for ISBN " .. isbn)
+end, { noremap = true, silent = true })

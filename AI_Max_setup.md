@@ -83,7 +83,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 We need to install some LSP, code-formatters and some dependencies
 
 ```sh
-sudo pacman -S nodejs npm bun lazygit stylua harper
+sudo pacman -S nodejs npm bun lazygit stylua harper texlab
 cargo install fd-find
 sudo npm install -g tree-sitter-cli
 
@@ -171,6 +171,8 @@ Unified Memory Allocation
 
 Since your laptop uses Unified Memory, the "allocation" happens by telling the amdgpu driver how much of the system RAM it's allowed to address as its own.
 
+Go through this for pytorch Allication [AMD docs](https://rocm.docs.amd.com/en/latest/how-to/system-optimization/rdna3-5.html)
+
 - Open your GRUB config:
   `sudo nano /etc/default/grub`
 - Edit the `GRUB_CMDLINE_LINUX_DEFAULT` line. Add these two parameters inside the quotes:
@@ -203,7 +205,7 @@ change the font to `FONT=ter-v24b`
 # Other
 
 ```sh
-sudo pacman -S rmpc ffmpeg ueberzugpp cava imagemagick jdk-openjdk hdf5 fastfetch okular vlc mov ristretto yazi tldr mandoc less ripgrep bat python-adblock qutebrowser nwg-look qtwebengine 7zip speech-dispatcher obs-studio obsidian speedtest-cli clipcat mpd mpc timidity++ freecad cpufetch libreoffice-fresh
+sudo pacman -S rmpc ffmpeg ueberzugpp cava imagemagick jdk-openjdk hdf5 fastfetch okular vlc mov ristretto yazi tldr mandoc less ripgrep bat python-adblock qutebrowser nwg-look qtwebengine 7zip speech-dispatcher obs-studio obsidian speedtest-cli clipcat mpd mpc timidity++ freecad cpufetch libreoffice-fresh pandoc
 paru -S zen-browser-bin zotero-bin
 uv pip install --system yt-dlp mutagen openslide-bin
 sudo makewhatis /usr/share/man
@@ -252,9 +254,7 @@ paru -S opencode btop nvtop vulkan-tools llvm vulkan-headers shaderc
 Install ollama using link in their website. Pulled these for now:
 
 ```
-ollama pull qwen3:14b
-ollama pull qwen2.5-coder:14b
-ollama pull deepseek-r1:14b
+ollama pull qwen3:7B
 ```
 
 Ollama couldn't able to run these models due to memory allocation with my laptop. It doesn't have the capability to address memory allocation for shared memory.
@@ -399,12 +399,15 @@ sqlit-tui & termdbms -> sqlite query and lookup
 
 # NIRI Setup
 
-```sh
+```
+
 sudo pacman -Syu niri xwayland-satellite cliphist wlsunset power-profiles-daemon
 ```
 
 ## Kannada language input setup on Archlinux
 
-```sh
+```
 sudo pacman -S fcitx5 fcitx5-m17n fcitx5-configtool fcitx5-gtk fcitx5-qt
 ```
+
+Use Ctrl+Alt+` to toggle between languages

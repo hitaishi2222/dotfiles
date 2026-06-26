@@ -1,13 +1,14 @@
 {
     "layer": "top",
     "position": "top",
+    "height": "10",
     "mod": "dock",
     "margin-left": 10,
     "margin-right": 10,
-    "margin-top": 10,
-    "margin-bottom": 0,
+    "margin-top": 5,
+    "margin-bottom": 3,
     "padding-top": 5,
-    "padding-bottom": 5,
+    "padding-bottom": 3,
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
@@ -16,7 +17,7 @@
 
     "modules-left": ["hyprland/workspaces","hyprland/window"],
     "modules-center": ["clock","mpris","mpd"],
-    "modules-right": ["group/expand","group/expand-3","memory","cpu","bluetooth","network","battery"],
+    "modules-right": ["pulseaudio","memory","cpu","bluetooth","network","battery"],
 
     "upower": {
         "icon-size": 20,
@@ -41,9 +42,10 @@
             "children-class": "not-power",
             "transition-to-left": true,
             "click-to-reveal": true
-        }
+        },
         // "modules": ["upower","upower/headset"]
     },
+
     "mpd": {
         "server": "/tmp/mpd_socket",
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} {title} | {artist} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
@@ -72,7 +74,7 @@
         "tooltip-format-disconnected": "MPD (disconnected)",
         "on-click": "rmpc togglepause",
         "on-click-middle": "rmpc prev",
-        "on-click-right": "rmpc next"
+        "on-click-right": "rmpc next",
     },
 
     "memory": {
@@ -86,12 +88,12 @@
         "interval": 1,
         "format": "{icon}",
         "rotate": 270,
-        "format-icons": ["󰝦","󰪞","󰪟","󰪠","󰪡","󰪢","󰪣","󰪤","󰪥"]
+        "format-icons": ["󰝦","󰪞","󰪟","󰪠","󰪡","󰪢","󰪣","󰪤","󰪥"],
     },
 
     "mpris": {
         "format": "{player_icon} {dynamic}",
-        "format-paused": "<span color='grey'>{status_icon} {dynamic}</span>",
+        "format-paused": "<span color='black'>{status_icon} {dynamic}</span>",
         "dynamic-order": ["title","artist","position", "length"],
         "max-length": 50,
         "player-icons": {
@@ -109,7 +111,7 @@
     "tray": {
         "icon-size": 16,
         "rotate": 0,
-        "spacing": 3
+        "spacing": 10
     },
 
     "group/expand": {
@@ -125,7 +127,7 @@
 
     "custom/menu":{
         "format": "󰅃",
-        "rotate": 90
+        "rotate": 90,
     },
 
     "custom/notification": {
@@ -179,35 +181,13 @@
             "empty": " "
         },
         "persistent-workspaces": {
-             "*": 5, // 5 workspaces by default on every monitor
-       }
+            "*": 3,
+        }
     },
 
     "custom/script": {
         "on-click": "~/.config/waybar/volume.sh toggle",
-        "format": "",
-    },
-
-    "custom/cliphist": {
-        "format": "{}",
-        "rotate": 0,
-        "exec": "echo ; echo 󰅇 clipboard history",
-        "on-click": "sleep 0.1 && cliphist.sh c",
-        "on-click-right": "sleep 0.1 && cliphist.sh d",
-        "on-click-middle": "sleep 0.1 && cliphist.sh w",
-        "interval" : 86400, // once every day
-        "tooltip": true
-    },
-
-    "custom/wbar": {
-        "format": "𐌏{}", //    //
-        "rotate": 0,
-        "exec": "echo ; echo show app menu",
-        "on-click": "wofi --show drun",
-        "on-click-right": "wbarconfgen.sh p",
-        "on-click-middle": "sleep 0.1 && quickapps.sh kitty firefox spotify code dolphin",
-        "interval" : 86400,
-        "tooltip": true
+        "format": ""
     },
 
 
@@ -224,7 +204,7 @@
 
     "clock": {
         "format": "{:%I:%M %p}",
-        "tooltip-format": "<span>{:%d/%m/%Y | %a}</span>",
+        "tooltip-format": "<span>{:%d/%m/%Y | %a}</span>"
     },
 
 
@@ -242,9 +222,8 @@
         // "format-icons": ["󰝦","󰪞","󰪟","󰪠","󰪡","󰪢","󰪣","󰪤","󰪥"],
         //  "format-icons": ["","","","","","","",""],  
         "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-        "on-click-right": "pkill waybar & hyprctl dispatch exec waybar",
+        "on-click": "pkill waybar && waybar &"
         //  "format-icons": [<i class='fa-solid fa-wifi-slash'></i>],
-
     },
 
 
@@ -255,20 +234,10 @@
             "children-class": "not-power",
             "transition-to-left": true,
             "click-to-reveal": true
-        },
+        }
         // "modules": ["backlight","backlight/slider","custom/smallspacer","custom/led"]
     },
 
-    "group/expand-3": {
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": 600,
-            "children-class": "not-power",
-            "transition-to-left": true,
-            "click-to-reveal": true
-        },
-        "modules": ["pulseaudio","pulseaudio/slider"]
-    },
 
     "network": {
         "tooltip": true,
@@ -282,15 +251,16 @@
         "format-disconnected": " ",
         "tooltip-format-disconnected": "Disconnected",
         "on-click": "/usr/local/bin/ags -t ControlPanel",
-        "interval": 2,
+        "interval": 2
     },
 
     "pulseaudio": {
         "format": "{icon}",
         "rotate": 0,
-        "format-muted": "婢",
+        "format-muted": "󰝟",
         "tooltip-format": "{icon} {desc} // {volume}%",
         "scroll-step": 5,
+        "on-click": "hyprpwcenter",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -302,21 +272,6 @@
         }
     },
 
-
-    "custom/expand": {
-        "on-click":"~/.config/hypr/scripts/expand_toolbar",
-        "format":"{}",
-        "exec":"~/.config/hypr/scripts/tools/expand arrow-icon"
-    },
-
-
-    "pulseaudio/slider": {
-        "min": 5,
-        "max": 100,
-        "rotate": 0,
-        "device": "pulseaudio",
-        "scroll-step": 1,
-    },
     "bluetooth": {
         "format": " {status}",
         "format-connected": " {device_alias}",

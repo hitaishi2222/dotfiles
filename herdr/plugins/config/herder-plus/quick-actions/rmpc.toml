@@ -1,0 +1,29 @@
+name = "RMPC - Music Player"
+description = "Shortcut for controlling Music player"
+type = "select"
+command = "rmpc {{.Value}}"
+
+[[options]]
+label = "play"
+value = "play"
+description = "Start playing"
+
+[[options]]
+label = "next"
+value = "next"
+description = "Play next song"
+
+[[options]]
+label = "stop"
+value = "stop"
+description = "Stop playing"
+
+[[options]]
+label = "add-random"
+value = "addrandom 20"
+description = "Randomly add 20 songs to list"
+
+[[options]]
+label = "clear"
+value = "clear"
+description = "Clear playlist"

@@ -1,0 +1,15 @@
+name = "Caffeine"
+description = "juice-up system by Caffeine"
+type = "select"
+command = "caffeine {{.Value}} && herdr notification show Caffeine --body {{.Value}}"
+
+[[options]]
+label = "start"
+value = "start"
+description = "start caffeination"
+
+[[options]]
+label = "stop"
+value = "stop"
+description = "stop caffeination"
+

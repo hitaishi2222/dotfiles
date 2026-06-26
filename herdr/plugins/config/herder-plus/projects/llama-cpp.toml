@@ -1,0 +1,12 @@
+name = "llama-cpp"
+description = "llama server"
+working_dir = "~/Research/local_llms/"
+
+[[tabs]]
+name = "server"
+command = "bash ~/Hiti/dotfiles/scripts/aillama"
+
+[[tabs]]
+name = "btop"
+command = "btop"
+

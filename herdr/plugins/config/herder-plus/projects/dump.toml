@@ -1,0 +1,11 @@
+name = "AI-Dump"
+description = "Extras | Testing"
+working_dir = "~/Research/ai_dump/"
+
+[[tabs]]
+name = "pi"
+command = "pi"
+
+[[tabs]]
+name = "terminal"
+

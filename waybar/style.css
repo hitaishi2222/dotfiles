@@ -79,6 +79,14 @@ window#waybar {
     transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
+#workspaces button.urgent {
+    background: none;
+    color: @color13;
+    border: none;
+    animation: ws_hover 20s ease-in-out 1;
+    transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
 #taskbar button {
     box-shadow: none;
     text-shadow: none;
@@ -114,14 +122,13 @@ window#waybar {
 }
 
 #tray menu * {
-    min-height: 12px;
+    min-height: 15px;
     font-weight: bold;
     font-size: 13px;
     color: #9488e3;
 }
 
 #tray menu separator {
-
     min-height: 10px
 }
 
@@ -207,7 +214,7 @@ window#waybar {
     color: #6F8FDB;
     background:  rgba(22, 19, 32, 0.0);
     opacity: 1;
-    margin: 0px 0px 0px 0px;
+    margin: 3px 5px 0px 0px;
     padding-left: 3px;
     padding-right: 3px;
 }
@@ -235,12 +242,12 @@ window#waybar {
     color: #E4C9AF;
 }
 #mpd{
-    background: @color9;
+    background: @color0;
     margin-right: 30px; 
     padding-left: 15px;
     padding-right: 30px;
     border-radius: 15px;
-    color: @color4;
+    color: @color1;
     animation: repeat;
     animation-name: blink;
     animation-duration: 3s;
@@ -249,11 +256,11 @@ window#waybar {
     animation-direction: alternate;
 }
 #mpris{
-    background: @color9;
+    background: @color0;
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 15px;
-    color: @color4;
+    color: @color1;
     animation: repeat;
     animation-name: blink;
     animation-duration: 3s;

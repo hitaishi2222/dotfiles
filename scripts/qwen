@@ -12,4 +12,4 @@ export ROCBLAS_USE_HIPBLASLT=1
 export GGML_CUDA_ENABLE_UNIFIED_MEMORY=1
 
 
-llama-server -m /home/hiti/Research/local_llms/Qwen3.6-35B-A3B-UD-MTP-Q4_K_M.gguf --alias Qwen3.5-35B-A3B-mtp --ctx-size 96000 --n-cpu-moe 12 --spec-draft-n-max 1 --spec-type  draft-mtp --top-p 0.95 --top-k 20 --min-p 0.0 --presence-penalty  0.0 --repeat-penalty  1.0 --port 2001 -fa on --ubatch-size 1024 --n-predict 32000 --jinja --cache-reuse 256 --threads 18 -tb 18 -ctk q8_0 -ctv q8_0 --reasoning  on
+llama-server -m /home/hiti/Research/local_llms/Qwen3.6-35B-A3B-UD-MTP-Q4_K_M.gguf --alias Qwen3.5-35B-A3B-mtp --ctx-size 96000 --n-cpu-moe 8 --spec-draft-n-max 1 --spec-type draft-mtp --top-p 0.95 --top-k 20 --min-p 0.0 --presence-penalty  0.0 --repeat-penalty  1.0 --port 2000 -fa on --ubatch-size 512 --n-predict 32000 --jinja --cache-reuse 256 --threads 24 -tb 24 -ctk q8_0 -ctv q8_0 --reasoning  on

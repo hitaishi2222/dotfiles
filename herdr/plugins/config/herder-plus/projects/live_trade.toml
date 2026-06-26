@@ -1,0 +1,17 @@
+name = "Live Trade"
+description = "trading code development"
+working_dir = "~/Hiti/projects/trading_codes/"
+
+[[tabs]]
+name = "nvim"
+command = "nvim ."
+
+[[tabs]]
+name = "live_trade"
+command = "cd live_trade"
+
+[[tabs]]
+name = "high-low"
+command = "cd high_low"
+
+

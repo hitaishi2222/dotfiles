@@ -205,7 +205,7 @@ change the font to `FONT=ter-v24b`
 # Other
 
 ```sh
-sudo pacman -S rmpc ffmpeg ueberzugpp cava imagemagick jdk-openjdk hdf5 fastfetch okular vlc mov ristretto yazi tldr mandoc less ripgrep bat python-adblock qutebrowser nwg-look qtwebengine 7zip speech-dispatcher obs-studio obsidian speedtest-cli clipcat mpd mpc timidity++ freecad cpufetch libreoffice-fresh pandoc
+sudo pacman -S rmpc ffmpeg ueberzugpp cava imagemagick jdk-openjdk hdf5 fastfetch okular vlc mov ristretto yazi tldr mandoc less ripgrep bat python-adblock qutebrowser nwg-look qtwebengine 7zip speech-dispatcher obs-studio obsidian speedtest-cli clipcat mpd mpc timidity++ freecad cpufetch libreoffice-fresh pandoc qpdf
 paru -S zen-browser-bin zotero-bin
 uv pip install --system yt-dlp mutagen openslide-bin
 sudo makewhatis /usr/share/man

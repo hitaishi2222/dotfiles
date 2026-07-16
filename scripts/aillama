@@ -13,4 +13,4 @@ export GGML_CUDA_ENABLE_UNIFIED_MEMORY=1
 
 # --- Start llama-server ---
 # llama-server --models-preset ~/Research/local_llms/models.ini --host 0.0.0.0 --port 2000
-llama-server --models-preset ~/Research/local_llms/models.ini  --port 2000
+llama-server --models-preset ~/Research/local_llms/models.ini  --port 2000 --metrics

@@ -1,0 +1,21 @@
+return{
+  background = "rgb(0E0E11)",
+  foreground = "rgb(FFF7D7)",
+  color0 = "rgb(39383C)",
+  color1 = "rgb(716D8C)",
+  color2 = "rgb(A06C6B)",
+  color3 = "rgb(6A8085)",
+  color4 = "rgb(9B7F92)",
+  color5 = "rgb(BC7D5C)",
+  color6 = "rgb(BEAF6A)",
+  color7 = "rgb(F6ECBE)",
+  color8 = "rgb(ACA585)",
+  color9 = "rgb(7D77A3)",
+  color10 = "rgb(B86666)",
+  color11 = "rgb(8EABB1)",
+  color12 = "rgb(CFA9C2)",
+  color13 = "rgb(FBA77B)",
+  color14 = "rgb(FEE98E)",
+  color15 = "rgb(F6ECBE)",
+}
+

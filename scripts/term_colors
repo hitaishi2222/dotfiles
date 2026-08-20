@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+"""Display terminal color palette from wallust sequences using pastel."""
+
+import os
+import re
+import subprocess
+import sys
+
+SEQUENCES_FILE = os.path.expanduser("~/.cache/wallust/sequences")
+
+if not os.path.isfile(SEQUENCES_FILE):
+    print(f"Error: {SEQUENCES_FILE} not found", file=sys.stderr)
+    sys.exit(1)
+
+with open(SEQUENCES_FILE, "rb") as f:
+    content = f.read()
+
+SPECIAL_NAMES = {
+    10: "foreground",
+    11: "background",
+    12: "cursor",
+}
+
+def parse_color(match):
+    num = int(match.group(1))
+    hex_code = f"#{match.group(2).decode()}"
+    return num, hex_code
+
+palette_pattern = rb'\x1b\]4;(\d+);#([0-9A-Fa-f]{6})\x1b\\'
+special_pattern = rb'\x1b\](\d+);#([0-9A-Fa-f]{6})\x1b\\'
+
+palette_matches = [parse_color(m) for m in re.finditer(palette_pattern, content)]
+
+palette_positions = set(m.start() for m in re.finditer(palette_pattern, content))
+special_matches = []
+for m in re.finditer(special_pattern, content):
+    if m.start() not in palette_positions:
+        special_matches.append(parse_color(m))
+
+colors = []
+
+seen_palette = set()
+for num, hex_code in palette_matches:
+    if num <= 15 and num not in seen_palette:
+        seen_palette.add(num)
+        colors.append((f"color{num}", hex_code))
+
+seen_special = set()
+for num, hex_code in special_matches:
+    if num in SPECIAL_NAMES and num not in seen_special:
+        seen_special.add(num)
+        colors.append((SPECIAL_NAMES[num], hex_code))
+
+def sort_key(item):
+    name = item[0]
+    if name.startswith("color"):
+        return (0, int(name[5:]))
+    return (1, name)
+
+colors.sort(key=sort_key)
+
+print("Terminal Color Palette")
+print("=" * 40)
+
+for name, hex_code in colors:
+    print(f"{name:12s}", end="", flush=True)
+    subprocess.run(["pastel", "paint", "-n", hex_code, "████████"], check=True)
+    result = subprocess.run(["pastel", "color", hex_code], capture_output=True, text=True)
+    hsl = result.stdout.strip()
+    print(f"  {hex_code}  {hsl}")

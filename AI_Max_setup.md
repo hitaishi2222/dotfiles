@@ -272,6 +272,13 @@ cmake -B build -DGGML_VULKAN=ON
 cmake --build build --config Release
 ```
 
+Rocm Build command
+
+```
+cmake -B build-rocm -DGGML_HIP=ON -DAMDGPU_TARGETS=gfx1151 -DCMAKE_BUILD_TYPE=Release
+cmake --build build-rocm -j12
+```
+
 ## Configuring sound
 
 ```sh

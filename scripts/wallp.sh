@@ -3,11 +3,11 @@
 # Directory where wallpapers are stored
 WALLPAPER_DIR="$HOME/Pictures/HD_wallpapers/"
 CONFIG_FILE="$HOME/.config/hypr/hyprpaper.conf"
-OLD=$(cat $CONFIG_FILE | awk '/path/ {print $3}')
+OLD=$(awk '/path/ {print $3; exit}' $CONFIG_FILE)
 
 #hyprlock
 HYPRLOCK_FILE="$HOME/.config/hypr/hyprlock.conf"
-OLDH=$(cat $CONFIG_FILE | awk '/path/ {print $3}')
+OLDH=$(awk '/path/ {print $3; exit}' $HYPRLOCK_FILE)
 
 # Files to reload
 WAYBAR="$HOME/.config/waybar/style.css"
@@ -26,5 +26,6 @@ if [ -n "$SELECTED" ]; then
     sed -i '' $TMUX
     killall dunst
     hyprctl hyprpaper wallpaper eDP-1,$SELECTED
+    hyprctl hyprpaper wallpaper ,$SELECTED
     qutebrowser ':config-source'
 fi
